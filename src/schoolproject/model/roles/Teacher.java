@@ -38,7 +38,8 @@ public class Teacher extends User{
         this.program = program;
     }
 
-
+public Teacher()
+{}
 
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Integer, SchoolClass> teachingClasses, SchoolClass ownClass, HashMap<String, HashMap<Integer, Subject>> program) {
         super(firstName, secondName, thirdName, email, username, password, gender);

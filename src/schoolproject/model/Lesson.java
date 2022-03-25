@@ -10,9 +10,18 @@ public class Lesson implements Identifiable<Long, String> {
     private Long id;
     private Subject subject;
     private LocalDateTime date;
+    private SchoolClass schoolClass;
     private HashMap<Long,StudentFeedback.Absence> absences=new HashMap<>();
     private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
+
+    public SchoolClass getSchoolClass() {
+        return schoolClass;
+    }
+
+    public void setSchoolClass(SchoolClass schoolClass) {
+        this.schoolClass = schoolClass;
+    }
 
     @Override
     public Long getId() {
@@ -42,7 +51,17 @@ public class Lesson implements Identifiable<Long, String> {
         this.date=date;
     }
 
-    public Lesson(Subject subject,LocalDateTime date, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
+    public Lesson(Subject subject, LocalDateTime date, SchoolClass schoolClass, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
+        this.subject = subject;
+        this.date = date;
+        this.schoolClass = schoolClass;
+        this.absences = absences;
+        this.remarks = remarks;
+        this.grades = grades;
+    }
+
+
+    public Lesson(Subject subject, LocalDateTime date, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
         this.subject = subject;
         this.date=date;
         this.absences = absences;

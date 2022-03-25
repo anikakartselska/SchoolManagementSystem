@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Student extends User{
+
     private int numberInClass;
     private HashMap<Integer, Parent>parents=new HashMap<>();
     private SchoolClass schoolClass;
@@ -18,6 +19,9 @@ public class Student extends User{
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
     private double averageGrade;
     private HashMap<Integer, Subject>subjects=new HashMap<>();
+
+    public Student() {
+    }
 
     public int getNumberInClass() {
         return numberInClass;

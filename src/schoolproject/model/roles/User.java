@@ -24,6 +24,8 @@ public class User implements Identifiable<Long, String> {
     public Role getRole() {
         return role;
     }
+    public User() {
+    }
 
     public void setRole(Role role) {
         this.role = role;

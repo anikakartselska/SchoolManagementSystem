@@ -3,6 +3,7 @@ package schoolproject.model;
 import schoolproject.dao.Identifiable;
 import schoolproject.dao.IdentifiableStudentFeedback;
 import schoolproject.model.roles.Student;
+import schoolproject.model.roles.Teacher;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -18,6 +19,13 @@ public class StudentFeedback {
         private Student student;
         private T value;
 
+        public Template(LocalDateTime date, Subject subject, Student student, T value) {
+            this.date = date;
+            this.subject = subject;
+            this.student = student;
+            this.value = value;
+        }
+
         @Override
         public String toString() {
             return new StringJoiner(", ", Template.class.getSimpleName() + "[", "]")
@@ -29,12 +37,7 @@ public class StudentFeedback {
                     .toString();
         }
 
-        public Template(LocalDateTime date, Subject subject, Student student, T value) {
-            this.date = date;
-            this.subject = subject;
-            this.student = student;
-            this.value = value;
-        }
+
 
         public T getValue() {
             return value;
@@ -87,10 +90,11 @@ public class StudentFeedback {
  //double
     public class Absence extends Template<Double>{
 
-        public Absence(LocalDateTime date, Subject subject, Student student, Double value) {
-            super(date, subject, student, value);
-        }
-    }
+
+     public Absence(LocalDateTime date, Subject subject, Student student, Double value) {
+         super( date, subject, student, value);
+     }
+ }
 
     public class Remark extends Template<String> {
 

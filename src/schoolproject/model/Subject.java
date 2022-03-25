@@ -13,7 +13,11 @@ public class Subject implements Identifiable<Long, String> {
     private HashMap<Long,StudentFeedback.Absence> absences=new HashMap<>();
     private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
-//array of lessons
+    private HashMap<Long,Lesson>lessons;
+
+    //array of lessons
+  public Subject() {
+   }
     public Subject(int name, Teacher teacher, double averageGrade, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
         this.subName = name;
         this.teacher = teacher;
