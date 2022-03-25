@@ -1,12 +1,13 @@
 package schoolproject.model;
 
 import schoolproject.dao.Identifiable;
+import schoolproject.dao.IdentifiableAGR;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Lesson implements Identifiable<Long, String> {
+public class Lesson implements IdentifiableAGR<Long,String> {
     private Long id;
     private Subject subject;
     private LocalDateTime date;

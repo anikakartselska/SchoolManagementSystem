@@ -1,11 +1,12 @@
 package schoolproject.model;
 
 import schoolproject.dao.Identifiable;
+import schoolproject.dao.IdentifiableAGR;
 import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
 
-public class Subject implements Identifiable<Long, String> {
+public class Subject implements IdentifiableAGR<Long, String> {
     private Long id;
     private int subName;
     private Teacher teacher;
