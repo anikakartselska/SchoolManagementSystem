@@ -1,17 +1,19 @@
 package schoolproject.model;
 
 import schoolproject.dao.Identifiable;
+import schoolproject.dao.IdentifiableStudentFeedback;
 import schoolproject.model.roles.Student;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.StringJoiner;
 
 public class StudentFeedback {
 
 
-    private class Template <T> implements Identifiable<Long,String> {
+    public class Template <T> implements Identifiable<Long, String>, IdentifiableStudentFeedback<T> {
         private Long id;
-        private Date date;
+        private LocalDateTime date;
         private Subject subject;
         private Student student;
         private T value;
@@ -27,7 +29,7 @@ public class StudentFeedback {
                     .toString();
         }
 
-        public Template(Date date, Subject subject, Student student, T value) {
+        public Template(LocalDateTime date, Subject subject, Student student, T value) {
             this.date = date;
             this.subject = subject;
             this.student = student;
@@ -56,11 +58,11 @@ public class StudentFeedback {
             return String.valueOf(this.getClass());
         }
 
-        public Date getDate() {
+        public LocalDateTime getDate() {
             return date;
         }
 
-        public void setDate(Date date) {
+        public void setDate(LocalDateTime date) {
             this.date = date;
         }
 
@@ -83,22 +85,22 @@ public class StudentFeedback {
 
     }
  //double
-    public class Absence extends Template<Integer>{
+    public class Absence extends Template<Double>{
 
-        public Absence(Date date, Subject subject, Student student, Integer value) {
+        public Absence(LocalDateTime date, Subject subject, Student student, Double value) {
             super(date, subject, student, value);
         }
     }
 
     public class Remark extends Template<String> {
 
-        public Remark( Date date, Subject subject, Student student, String value) {
+        public Remark( LocalDateTime  date, Subject subject, Student student, String value) {
             super( date, subject, student, value);
         }
     }
     public class Grade extends Template<Integer>{
 
-        public Grade( Date date, Subject subject, Student student, Integer value) {
+        public Grade( LocalDateTime  date, Subject subject, Student student, Integer value) {
             super(date, subject, student, value);
         }
     }

@@ -2,13 +2,14 @@ package schoolproject.model;
 
 import schoolproject.dao.Identifiable;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 
 public class Lesson implements Identifiable<Long, String> {
     private Long id;
     private Subject subject;
-    private Date date;
+    private LocalDateTime date;
     private HashMap<Long,StudentFeedback.Absence> absences=new HashMap<>();
     private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
@@ -28,20 +29,20 @@ public class Lesson implements Identifiable<Long, String> {
         return getSubject().getName()+getClass().toString();
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public Lesson(Subject subject,Date date) {
+    public Lesson(Subject subject,LocalDateTime date) {
         this.subject = subject;
         this.date=date;
     }
 
-    public Lesson(Subject subject,Date date, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
+    public Lesson(Subject subject,LocalDateTime date, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
         this.subject = subject;
         this.date=date;
         this.absences = absences;

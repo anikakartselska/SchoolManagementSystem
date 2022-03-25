@@ -1,7 +1,6 @@
 package schoolproject.dao.impl;
 
 import schoolproject.dao.GradeRepository;
-import schoolproject.model.StudentFeedback;
 
-public class GradeRepositoryImpl extends RepositoryImpl<Long,String, StudentFeedback.Grade> implements GradeRepository{
+public class GradeRepositoryImpl extends StudentFeedbackTempRepoImpl<Integer> implements GradeRepository {
 }
