@@ -1,6 +1,9 @@
-package schoolproject.model;
+package schoolproject.model.roles;
 
 import schoolproject.dao.Identifiable;
+import schoolproject.model.enums.Gender;
+import schoolproject.model.enums.Role;
+import schoolproject.model.enums.Status;
 
 import java.util.Date;
 import java.util.StringJoiner;
@@ -14,11 +17,29 @@ public class User implements Identifiable<Long, String> {
     private String username;
     private String password;
     private Gender gender;
-    private Role role;
     private String phoneNumber;
     private String address;
     private Date birthday;
-//status
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    private Role role=Role.USER;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    private Status status=Status.PENDING;
     @Override
     public String toString() {
         return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
@@ -29,14 +50,14 @@ public class User implements Identifiable<Long, String> {
                 .add("email='" + email + "'")
                 .add("username='" + username + "'")
                 .add("gender=" + gender)
-                .add("role=" + role)
                 .add("phoneNumber='" + phoneNumber + "'")
                 .add("address='" + address + "'")
                 .add("birthday=" + birthday)
+                .add("status=" + status)
                 .toString();
     }
 
-    public User(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, Role role) {
+    public User(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.thirdName = thirdName;
@@ -44,10 +65,10 @@ public class User implements Identifiable<Long, String> {
         this.username = username;
         this.password = password;
         this.gender = gender;
-        this.role = role;
+
     }
 
-    public User( String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, Role role, String phoneNumber, String address, Date birthday) {
+    public User( String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.thirdName = thirdName;
@@ -55,7 +76,6 @@ public class User implements Identifiable<Long, String> {
         this.username = username;
         this.password = password;
         this.gender = gender;
-        this.role = role;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.birthday = birthday;
@@ -128,14 +148,6 @@ public class User implements Identifiable<Long, String> {
 
     public void setGender(Gender gender) {
         this.gender = gender;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public String getPhoneNumber() {

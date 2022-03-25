@@ -1,15 +1,16 @@
 package schoolproject.model;
 
 import schoolproject.dao.Identifiable;
+import schoolproject.model.roles.Student;
+import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class SchoolClass implements Identifiable<Long, String> {
     private Long id;
     private Teacher mainTeacher;
     private HashMap<Integer,Subject>subjects=new HashMap<>();
-    private HashMap<Integer,Student>students=new HashMap<>();
+    private HashMap<Integer, Student>students=new HashMap<>();
     private HashMap<String,HashMap<Integer,Subject>>program=new HashMap<>();
     private HashMap<Integer,Lesson> lessons=new HashMap<>();
 

@@ -1,17 +1,23 @@
-package schoolproject.model;
+package schoolproject.model.roles;
+
+import schoolproject.model.SchoolClass;
+import schoolproject.model.StudentFeedback;
+import schoolproject.model.Subject;
+import schoolproject.model.enums.Gender;
+import schoolproject.model.enums.Role;
 
 import java.util.Date;
 import java.util.HashMap;
 
 public class Student extends User{
     private int numberInClass;
-    private HashMap<Integer,Parent>parents=new HashMap<>();
+    private HashMap<Integer, Parent>parents=new HashMap<>();
     private SchoolClass schoolClass;
-    private HashMap<Long,StudentFeedback.Absence> absences=new HashMap<>();
+    private HashMap<Long, StudentFeedback.Absence> absences=new HashMap<>();
     private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
     private double averageGrade;
-    private HashMap<Integer,Subject>subjects=new HashMap<>();
+    private HashMap<Integer, Subject>subjects=new HashMap<>();
 
     public int getNumberInClass() {
         return numberInClass;
@@ -21,18 +27,20 @@ public class Student extends User{
         this.numberInClass = numberInClass;
     }
 
-    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, Role role, int numberInClass, HashMap<Integer, Parent> parents, SchoolClass schoolClass) {
-        super(firstName, secondName, thirdName, email, username, password, gender, role);
+    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, int numberInClass, HashMap<Integer, Parent> parents, SchoolClass schoolClass) {
+        super(firstName, secondName, thirdName, email, username, password, gender);
         this.numberInClass = numberInClass;
         this.parents = parents;
         this.schoolClass = schoolClass;
+        this.setRole(Role.STUDENT);
     }
 
-    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, Role role, String phoneNumber, String address, Date birthday, int numberInClass, HashMap<Integer, Parent> parents, SchoolClass schoolClass) {
-        super(firstName, secondName, thirdName, email, username, password, gender, role, phoneNumber, address, birthday);
+    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, int numberInClass, HashMap<Integer, Parent> parents, SchoolClass schoolClass) {
+        super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.numberInClass = numberInClass;
         this.parents = parents;
         this.schoolClass = schoolClass;
+        this.setRole(Role.STUDENT);
     }
 
     public HashMap<Integer, Parent> getParents() {
@@ -92,12 +100,14 @@ public class Student extends User{
         this.subjects = subjects;
     }
 
-    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, Role role) {
-        super(firstName, secondName, thirdName, email, username, password, gender, role);
+    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender) {
+        super(firstName, secondName, thirdName, email, username, password, gender);
+        this.setRole(Role.STUDENT);
     }
 
-    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, Role role, String phoneNumber, String address, Date birthday) {
-        super(firstName, secondName, thirdName, email, username, password, gender, role, phoneNumber, address, birthday);
+    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday) {
+        super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
+        this.setRole(Role.STUDENT);
     }
 
 

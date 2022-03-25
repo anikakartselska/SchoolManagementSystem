@@ -1,6 +1,7 @@
 package schoolproject.model;
 
 import schoolproject.dao.Identifiable;
+import schoolproject.model.roles.Student;
 
 import java.util.Date;
 import java.util.StringJoiner;

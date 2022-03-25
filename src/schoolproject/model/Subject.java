@@ -1,9 +1,9 @@
 package schoolproject.model;
 
 import schoolproject.dao.Identifiable;
+import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Subject implements Identifiable<Long, String> {
     private Long id;
