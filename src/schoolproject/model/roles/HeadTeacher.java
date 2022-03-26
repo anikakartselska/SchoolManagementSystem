@@ -10,23 +10,23 @@ import java.util.HashMap;
 
 public class HeadTeacher extends Teacher{
 
-    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Integer, SchoolClass> teachingClasses, SchoolClass ownClass, HashMap<String, HashMap<Integer, Subject>> program) {
-        super(firstName, secondName, thirdName, email, username, password, gender, teachingClasses, ownClass, program);
+    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
+        super(firstName, secondName, thirdName, email, username, password, gender, teachingClasses, ownClass);
         this.setRole(Role.HEAD_TEACHER);
     }
 
-    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Integer, SchoolClass> teachingClasses, HashMap<String, HashMap<Integer, Subject>> program) {
-        super(firstName, secondName, thirdName, email, username, password, gender, teachingClasses, program);
+    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses) {
+        super(firstName, secondName, thirdName, email, username, password, gender, teachingClasses);
         this.setRole(Role.HEAD_TEACHER);
     }
 
-    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, HashMap<Integer, SchoolClass> teachingClasses, HashMap<String, HashMap<Integer, Subject>> program) {
-        super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday, teachingClasses, program);
+    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, HashMap<Long, SchoolClass> teachingClasses) {
+        super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday, teachingClasses);
         this.setRole(Role.HEAD_TEACHER);
     }
 
-    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, HashMap<Integer, SchoolClass> teachingClasses, SchoolClass ownClass, HashMap<String, HashMap<Integer, Subject>> program) {
-        super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday, teachingClasses, ownClass, program);
+    public HeadTeacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
+        super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday, teachingClasses, ownClass);
         this.setRole(Role.HEAD_TEACHER);
     }
 

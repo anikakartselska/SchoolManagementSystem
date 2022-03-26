@@ -59,8 +59,12 @@ public class SchoolClass implements Identifiable<Long, String> {
         return program;
     }
 
-    public void setProgram(HashMap<String, HashMap<Integer, Subject>> program) {
-        this.program = program;
+    public void setProgram() {
+        this.program.put("Monday",new HashMap<>());
+        this.program.put("Tuesday",new HashMap<>());
+        this.program.put("Wednesday",new HashMap<>());
+        this.program.put("Thursday",new HashMap<>());
+        this.program.put("Friday",new HashMap<>());
     }
 
     public HashMap<Integer, Lesson> getLessons() {
@@ -71,10 +75,10 @@ public class SchoolClass implements Identifiable<Long, String> {
         this.lessons = lessons;
     }
 
-    public SchoolClass(Teacher mainTeacher, HashMap<Integer, Subject> subjects, HashMap<Integer, Student> students, HashMap<String, HashMap<Integer, Subject>> program) {
+    public SchoolClass(Teacher mainTeacher, HashMap<Integer, Subject> subjects, HashMap<Integer, Student> students) {
         this.mainTeacher = mainTeacher;
         this.subjects = subjects;
         this.students = students;
-        this.program = program;
+        setProgram();
     }
 }

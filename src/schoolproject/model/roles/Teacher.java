@@ -1,5 +1,6 @@
 package schoolproject.model.roles;
 
+import schoolproject.dao.UserIdentifiable;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 import schoolproject.model.enums.Gender;
@@ -8,17 +9,18 @@ import schoolproject.model.enums.Role;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Teacher extends User{
-   private HashMap<Integer, SchoolClass>teachingClasses=new HashMap<>();
+public class Teacher extends User implements UserIdentifiable {
+
+    private HashMap<Long, SchoolClass>teachingClasses=new HashMap<>();
    private SchoolClass ownClass;
-    private HashMap<String,HashMap<Integer, Subject>>program=new HashMap<>();
+    private HashMap<Integer,HashMap<Integer,Subject>>program;
 
 
-    public HashMap<Integer, SchoolClass> getTeachingClasses() {
+    public HashMap<Long, SchoolClass> getTeachingClasses() {
         return teachingClasses;
     }
 
-    public void setTeachingClasses(HashMap<Integer, SchoolClass> teachingClasses) {
+    public void setTeachingClasses(HashMap<Long, SchoolClass> teachingClasses) {
         this.teachingClasses = teachingClasses;
     }
 
@@ -30,45 +32,51 @@ public class Teacher extends User{
         this.ownClass = ownClass;
     }
 
-    public HashMap<String, HashMap<Integer, Subject>> getProgram() {
+    public HashMap<Integer, HashMap<Integer, Subject>> getProgram() {
         return program;
     }
 
-    public void setProgram(HashMap<String, HashMap<Integer, Subject>> program) {
-        this.program = program;
+    public void setProgram() {
+        this.program.put(1,new HashMap<>());
+        this.program.put(2,new HashMap<>());
+        this.program.put(3,new HashMap<>());
+        this.program.put(4,new HashMap<>());
+        this.program.put(5,new HashMap<>());
     }
 
 public Teacher()
 {}
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Integer, SchoolClass> teachingClasses, SchoolClass ownClass, HashMap<String, HashMap<Integer, Subject>> program) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
         super(firstName, secondName, thirdName, email, username, password, gender);
         this.teachingClasses = teachingClasses;
         this.ownClass = ownClass;
-        this.program = program;
         this.setRole(Role.TEACHER);
+        setProgram();
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Integer, SchoolClass> teachingClasses, HashMap<String, HashMap<Integer, Subject>> program) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses) {
         super(firstName, secondName, thirdName, email, username, password, gender);
         this.teachingClasses = teachingClasses;
-        this.program = program;
         this.setRole(Role.TEACHER);
+        setProgram();
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, Date birthday, HashMap<Integer, SchoolClass> teachingClasses, HashMap<String, HashMap<Integer, Subject>> program) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, Date birthday, HashMap<Long, SchoolClass> teachingClasses) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.teachingClasses = teachingClasses;
-        this.program = program;
+        setProgram();
         this.setRole(Role.TEACHER);
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, Date birthday, HashMap<Integer, SchoolClass> teachingClasses, SchoolClass ownClass, HashMap<String, HashMap<Integer, Subject>> program) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, Date birthday, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.teachingClasses = teachingClasses;
         this.ownClass = ownClass;
-        this.program = program;
+        setProgram();
         this.setRole(Role.TEACHER);
+
+
 
     }
 
