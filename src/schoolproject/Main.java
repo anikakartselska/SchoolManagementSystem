@@ -1,11 +1,14 @@
 package schoolproject;
 
 import schoolproject.dao.AbsenceRepository;
+import schoolproject.dao.StudentRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.impl.AbsenceRepositoryImpl;
+import schoolproject.dao.impl.StudentRepositoryImpl;
 import schoolproject.model.StudentFeedback;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;
+import schoolproject.model.roles.User;
 
 import java.time.LocalDateTime;
 
@@ -26,6 +29,11 @@ public class Main {
         {
             System.out.println(absence);
         }
+        StudentRepositoryImpl studentRepository=new StudentRepositoryImpl();
+       studentRepository.add(new Student());
+        System.out.println(studentRepository.findById(1L));
+
+
 
     }
 }

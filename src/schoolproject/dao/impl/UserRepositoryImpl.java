@@ -1,82 +1,84 @@
 package schoolproject.dao.impl;
 
+import schoolproject.dao.Identifiable;
+import schoolproject.dao.UserIdentifiable;
 import schoolproject.dao.UserRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.roles.User;
 
-public class UserRepositoryImpl extends RepositoryImpl<Long,String, User> implements UserRepository {
+public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, String>> extends RepositoryImpl<Long,String, V> implements UserRepository<V> {
 
     @Override
-    public User changeFirstName(User user, String newFirstName) throws EntityNotFoundException {
-       User updatedUser=user;
+    public V changeFirstName(V user, String newFirstName) throws EntityNotFoundException {
+        V updatedUser=user;
        updatedUser.setFirstName(newFirstName);
       return update(updatedUser);
     }
 
     @Override
-    public User changeSecondName(User user, String newSecondName) throws EntityNotFoundException {
-        User updatedUser=user;
+    public V changeSecondName(V user, String newSecondName) throws EntityNotFoundException {
+        V updatedUser=user;
         updatedUser.setSecondName(newSecondName);
         return update(updatedUser);
     }
 
     @Override
-    public User changeThirdName(User user, String newThirdName) throws EntityNotFoundException {
-        User updatedUser=user;
+    public V changeThirdName(V user, String newThirdName) throws EntityNotFoundException {
+        V updatedUser=user;
         updatedUser.setThirdName(newThirdName);
         return update(updatedUser);
     }
 
     @Override
-    public User changePassword(User user, String newPassword) throws EntityNotFoundException {
+    public V changePassword(V user, String newPassword) throws EntityNotFoundException {
 
-        User updatedUser=user;
+        V updatedUser=user;
         updatedUser.setPassword(newPassword);
         return update(updatedUser);
     }
 
     @Override
-    public User changeGender(User user, Gender newGender) throws EntityNotFoundException {
-        User updatedUser=user;
+    public V changeGender(V user, Gender newGender) throws EntityNotFoundException {
+        V updatedUser=user;
         updatedUser.setGender(newGender);
         return update(updatedUser);
     }
 
     @Override
-    public User changePhoneNumber(User user, String newPhoneNumber) throws EntityNotFoundException {
-        User updatedUser=user;
+    public V changePhoneNumber(V user, String newPhoneNumber) throws EntityNotFoundException {
+        V updatedUser=user;
         updatedUser.setPhoneNumber(newPhoneNumber);
         return update(updatedUser);
     }
 
     @Override
-    public User changeAddress(User user, String newAddress) throws EntityNotFoundException {
-        User updatedUser=user;
+    public V changeAddress(V user, String newAddress) throws EntityNotFoundException {
+        V updatedUser=user;
         updatedUser.setAddress(newAddress);
         return update(updatedUser);
     }
 
     @Override
-    public User findByEmail(String email) {
+    public V findByEmail(String email) {
 
-        for(User user: findAll())
+        for(V user: findAll())
             if(user.getEmail().equals(email))
                 return user;
             return null;
     }
 
     @Override
-    public User findByUsername(String userName) {
-        for(User user: findAll())
+    public V findByUsername(String userName) {
+        for(V user: findAll())
             if(user.getUsername().equals(userName))
                 return user;
         return null;
     }
 
     @Override
-    public User findByPhoneNumber(String phoneNumber) {
-        for(User user: findAll())
+    public V findByPhoneNumber(String phoneNumber) {
+        for(V user: findAll())
             if(user.getPhoneNumber().equals(phoneNumber))
                 return user;
 

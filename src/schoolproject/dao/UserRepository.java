@@ -4,15 +4,15 @@ import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.roles.User;
 
-public interface UserRepository extends Repository <Long,String, User>{
-    User changeFirstName(User user,String newFirstName) throws EntityNotFoundException;
-    User changeSecondName(User user,String newSecondName) throws EntityNotFoundException;
-    User changeThirdName(User user,String newThirdName) throws EntityNotFoundException;
-    User changePassword(User user,String newPassword) throws EntityNotFoundException;
-    User changeGender(User user, Gender newGender) throws EntityNotFoundException;
-    User changePhoneNumber(User user,String newPhoneNumber) throws EntityNotFoundException;
-    User changeAddress(User user,String newAddress) throws EntityNotFoundException;
-    User findByEmail(String email);
-    User findByUsername(String userName);
-    User findByPhoneNumber(String phoneNumber);
+public interface UserRepository<V extends UserIdentifiable> {
+    V changeFirstName(V user,String newFirstName) throws EntityNotFoundException;
+    V changeSecondName(V user,String newSecondName) throws EntityNotFoundException;
+    V changeThirdName(V user,String newThirdName) throws EntityNotFoundException;
+    V changePassword(V user,String newPassword) throws EntityNotFoundException;
+    V changeGender(V user, Gender newGender) throws EntityNotFoundException;
+    V changePhoneNumber(V user,String newPhoneNumber) throws EntityNotFoundException;
+    V changeAddress(V user,String newAddress) throws EntityNotFoundException;
+    V findByEmail(String email);
+    V findByUsername(String userName);
+    V findByPhoneNumber(String phoneNumber);
 }
