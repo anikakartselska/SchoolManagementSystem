@@ -9,11 +9,10 @@ import java.util.HashMap;
 public class SchoolClass implements Identifiable<Long, String> {
     private Long id;
     private Teacher mainTeacher;
-    private HashMap<Integer,Subject>subjects=new HashMap<>();
-    private HashMap<Integer, Student>students=new HashMap<>();
-    private HashMap<String,HashMap<Integer,Subject>>program=new HashMap<>();
-    private HashMap<Integer,Lesson> lessons=new HashMap<>();
-
+    private HashMap<Long,Subject>subjects=new HashMap<>();
+    private HashMap<Long, Student>students=new HashMap<>();
+    private HashMap<Long,Lesson> lessons=new HashMap<>();
+    private HashMap<Integer,HashMap<Integer,Subject>>program=new HashMap<>();
     public SchoolClass(Teacher mainTeacher) {
         this.mainTeacher = mainTeacher;
     }
@@ -39,43 +38,49 @@ public class SchoolClass implements Identifiable<Long, String> {
         this.mainTeacher = mainTeacher;
     }
 
-    public HashMap<Integer, Subject> getSubjects() {
+
+
+    public void setProgram() {
+        this.program.put(1,new HashMap<>());
+        this.program.put(2,new HashMap<>());
+        this.program.put(3,new HashMap<>());
+        this.program.put(4,new HashMap<>());
+        this.program.put(5,new HashMap<>());
+    }
+
+    public HashMap<Long, Subject> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(HashMap<Integer, Subject> subjects) {
+    public void setSubjects(HashMap<Long, Subject> subjects) {
         this.subjects = subjects;
     }
 
-    public HashMap<Integer, Student> getStudents() {
+    public HashMap<Long, Student> getStudents() {
         return students;
     }
 
-    public void setStudents(HashMap<Integer, Student> students) {
+    public void setStudents(HashMap<Long, Student> students) {
         this.students = students;
     }
 
-    public HashMap<String, HashMap<Integer, Subject>> getProgram() {
-        return program;
-    }
-
-    public void setProgram() {
-        this.program.put("Monday",new HashMap<>());
-        this.program.put("Tuesday",new HashMap<>());
-        this.program.put("Wednesday",new HashMap<>());
-        this.program.put("Thursday",new HashMap<>());
-        this.program.put("Friday",new HashMap<>());
-    }
-
-    public HashMap<Integer, Lesson> getLessons() {
+    public HashMap<Long, Lesson> getLessons() {
         return lessons;
     }
 
-    public void setLessons(HashMap<Integer, Lesson> lessons) {
+    public void setLessons(HashMap<Long, Lesson> lessons) {
         this.lessons = lessons;
     }
 
-    public SchoolClass(Teacher mainTeacher, HashMap<Integer, Subject> subjects, HashMap<Integer, Student> students) {
+    public HashMap<Integer, HashMap<Integer, Subject>> getProgram() {
+        return program;
+    }
+
+    public void setProgram(HashMap<Integer, HashMap<Integer, Subject>> program) {
+        this.program = program;
+    }
+
+    public SchoolClass(Teacher mainTeacher, HashMap<Long, Subject> subjects, HashMap<Long, Student> students) {
         this.mainTeacher = mainTeacher;
         this.subjects = subjects;
         this.students = students;
