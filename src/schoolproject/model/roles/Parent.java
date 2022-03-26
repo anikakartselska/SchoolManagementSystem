@@ -1,5 +1,6 @@
 package schoolproject.model.roles;
 
+import schoolproject.dao.UserIdentifiable;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Role;
 
@@ -7,7 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.StringJoiner;
 
-public class Parent extends User{
+public class Parent extends User implements UserIdentifiable {
    private HashMap<Long, Student> children=new HashMap<>();
    private double monthIncome;
 
