@@ -1,10 +1,12 @@
 package schoolproject.dao.rolerepositories;
 
+import schoolproject.dao.Repository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.model.enums.Gender;
 
-public interface UserRepository<V extends UserIdentifiable> {
+public interface UserRepository<V extends UserIdentifiable & Identifiable<Long, String>> extends Repository<Long,String,V> {
     V changeFirstName(V user,String newFirstName) throws EntityNotFoundException;
     V changeSecondName(V user,String newSecondName) throws EntityNotFoundException;
     V changeThirdName(V user,String newThirdName) throws EntityNotFoundException;

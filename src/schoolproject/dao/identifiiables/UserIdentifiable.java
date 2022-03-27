@@ -4,6 +4,9 @@ import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.roles.User;
 
+import java.time.Instant;
+import java.time.LocalDate;
+
 public interface UserIdentifiable{
     String getFirstName();
     String getSecondName();
@@ -28,4 +31,6 @@ public interface UserIdentifiable{
     void setPhoneNumber(String newPhoneNumber);
 
     void setAddress(String newAddress);
+
+    LocalDate getBirthday();
 }

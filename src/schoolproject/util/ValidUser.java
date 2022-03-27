@@ -1,6 +1,8 @@
 package schoolproject.util;
 
 import schoolproject.dao.exceptions.InvalidEntityDataException;
+import schoolproject.dao.identifiiables.Identifiable;
+import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.model.roles.User;
 
@@ -10,14 +12,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ValidUser {
-    private UserRepository userRepository;
+public class ValidUser<V extends UserIdentifiable & Identifiable<Long, String>> {
+    private UserRepository<V> userRepository;
 
-    public ValidUser(UserRepository userRepository) {
+    public ValidUser(UserRepository<V> userRepository) {
         this.userRepository = userRepository;
     }
 
-    public void validate(User user) throws InvalidEntityDataException {
+    public void validate(V user) throws InvalidEntityDataException {
 
         var firstNameLen = user.getFirstName().trim().length();
         if(firstNameLen < 2 || firstNameLen > 20){
@@ -39,7 +41,7 @@ public class ValidUser {
         Pattern pattern = Pattern.compile("^(.+)@(.+)$");
         Matcher matcher = pattern.matcher(user.getEmail());
 
-        if (!matcher.matches() || userRepository.findByEmail(user.getEmail())!=null) {
+        if (!matcher.matches() || (user.getId()==null && userRepository.findByEmail(user.getEmail())!=null)) {
             throw  new InvalidEntityDataException(user.getClass().getName()+ " email "+ user.getEmail()+
                             " Invalid or already used email.");
         }

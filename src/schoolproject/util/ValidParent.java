@@ -32,18 +32,6 @@ public class ValidParent {
         }
     }
 
-    public static void main(String[] args) {
-        UserRepository ur=new UserRepositoryImpl();
-        ValidParent vu=new ValidParent(ur);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-        try {
-            vu.validate(new Parent("Anika","Petrova","Kartselska","aa@abv.bg","anika","Anikaaa444$", Gender.FEMALE,"0894673436","rupite", LocalDate.parse("09.12.2001",dtf),new HashMap<>(),-34));
-        } catch (InvalidEntityDataException e) {
-            e.printStackTrace();
-        }
-
-
-    }
     }
 
