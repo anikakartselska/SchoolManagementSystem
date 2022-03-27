@@ -6,6 +6,7 @@ import schoolproject.dao.IdentifiableAGR;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 public class Lesson implements IdentifiableAGR<Long,String> {
     private Long id;
@@ -15,6 +16,19 @@ public class Lesson implements IdentifiableAGR<Long,String> {
     private HashMap<Long,StudentFeedback.Absence> absences=new HashMap<>();
     private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Lesson.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("subject=" + subject)
+                .add("date=" + date)
+                .add("schoolClass=" + schoolClass)
+                .add("absences=" + absences)
+                .add("remarks=" + remarks)
+                .add("grades=" + grades)
+                .toString();
+    }
 
     public SchoolClass getSchoolClass() {
         return schoolClass;

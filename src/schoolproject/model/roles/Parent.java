@@ -50,8 +50,9 @@ public class Parent extends User implements UserIdentifiable {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", super.toString() + "[", "]")
+        return new StringJoiner(", ", Parent.class.getSimpleName() , super.toString())
                 .add("children=" + children)
+                .add("monthIncome=" + monthIncome)
                 .toString();
     }
 

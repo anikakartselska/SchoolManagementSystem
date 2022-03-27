@@ -17,6 +17,15 @@ public class SchoolClass implements Identifiable<Long, String> {
         this.mainTeacher = mainTeacher;
     }
 
+    public SchoolClass(Long id, Teacher mainTeacher, HashMap<Long, Subject> subjects, HashMap<Long, Student> students, HashMap<Long, Lesson> lessons, HashMap<Integer, HashMap<Integer, Subject>> program) {
+        this.id = id;
+        this.mainTeacher = mainTeacher;
+        this.subjects = subjects;
+        this.students = students;
+        this.lessons = lessons;
+        this.program = program;
+    }
+
     public Long getId() {
         return id;
     }

@@ -5,6 +5,7 @@ import schoolproject.dao.IdentifiableAGR;
 import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 public class Subject implements IdentifiableAGR<Long, String> {
     private Long id;
@@ -17,6 +18,22 @@ public class Subject implements IdentifiableAGR<Long, String> {
     private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
     private HashMap<Long,Lesson>lessons;
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Subject.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("subName='" + subName + "'")
+                .add("teacher=" + teacher)
+                .add("averageGrade=" + averageGrade)
+                .add("schoolClass=" + schoolClass)
+                .add("weeklyLessons=" + weeklyLessons)
+                .add("absences=" + absences)
+                .add("remarks=" + remarks)
+                .add("grades=" + grades)
+                .add("lessons=" + lessons)
+                .toString();
+    }
 
     public int getWeeklyLessons() {
         return weeklyLessons;

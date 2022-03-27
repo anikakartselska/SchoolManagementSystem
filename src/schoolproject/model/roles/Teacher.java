@@ -8,6 +8,7 @@ import schoolproject.model.enums.Role;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 public class Teacher extends User implements UserIdentifiable {
 
@@ -15,6 +16,14 @@ public class Teacher extends User implements UserIdentifiable {
    private SchoolClass ownClass;
     private HashMap<Integer,HashMap<Integer,Subject>>program;
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Teacher.class.getSimpleName() , super.toString())
+                .add("teachingClasses=" + teachingClasses)
+                .add("ownClass=" + ownClass)
+                .add("program=" + program)
+                .toString();
+    }
 
     public HashMap<Long, SchoolClass> getTeachingClasses() {
         return teachingClasses;

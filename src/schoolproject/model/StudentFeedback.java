@@ -28,7 +28,7 @@ public class StudentFeedback {
 
         @Override
         public String toString() {
-            return new StringJoiner(", ", Template.class.getSimpleName() + "[", "]")
+            return new StringJoiner(", ",  "[", "]")
                     .add("id=" + id)
                     .add("date=" + date)
                     .add("subject=" + subject)
@@ -94,6 +94,12 @@ public class StudentFeedback {
      public Absence(LocalDateTime date, Subject subject, Student student, Double value) {
          super( date, subject, student, value);
      }
+
+     @Override
+     public String toString() {
+         return new StringJoiner(", ", Absence.class.getSimpleName() , super.toString())
+                 .toString();
+     }
  }
 
     public class Remark extends Template<String> {
@@ -101,11 +107,21 @@ public class StudentFeedback {
         public Remark( LocalDateTime  date, Subject subject, Student student, String value) {
             super( date, subject, student, value);
         }
+        @Override
+        public String toString() {
+            return new StringJoiner(", ",Remark.class.getSimpleName() , super.toString())
+                    .toString();
+        }
     }
     public class Grade extends Template<Integer>{
 
         public Grade( LocalDateTime  date, Subject subject, Student student, Integer value) {
             super(date, subject, student, value);
+        }
+        @Override
+        public String toString() {
+            return new StringJoiner(", ", Grade.class.getSimpleName() , super.toString())
+                    .toString();
         }
     }
     }

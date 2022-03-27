@@ -44,7 +44,7 @@ public class User implements Identifiable<Long, String> {
     private Status status=Status.PENDING;
     @Override
     public String toString() {
-        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ",  "[", "]")
                 .add("id=" + id)
                 .add("firstName='" + firstName + "'")
                 .add("secondName='" + secondName + "'")

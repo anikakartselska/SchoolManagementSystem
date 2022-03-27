@@ -10,9 +10,9 @@ import schoolproject.model.enums.Role;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 public class Student extends User implements IdentifiableAGR<Long, String>, UserIdentifiable {
-    private Long id;
     private int numberInClass;
     private HashMap<Long, Parent>parents=new HashMap<>();
     private SchoolClass schoolClass;
@@ -25,13 +25,17 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
     }
 
     @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
+    public String toString() {
+        return new StringJoiner(", ", Student.class.getSimpleName() , super.toString())
+                .add("numberInClass=" + numberInClass)
+                .add("parents=" + parents)
+                .add("schoolClass=" + schoolClass)
+                .add("averageGrade=" + averageGrade)
+                .add("subjects=" + subjects)
+                .add("absences=" + absences)
+                .add("remarks=" + remarks)
+                .add("grades=" + grades)
+                .toString();
     }
 
     public int getNumberInClass() {
