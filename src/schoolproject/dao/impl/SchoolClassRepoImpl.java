@@ -4,6 +4,7 @@ package schoolproject.dao.impl;
 import schoolproject.dao.SchoolClassRepo;
 import schoolproject.dao.exceptions.BusyClassException;
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
@@ -145,7 +146,7 @@ public class SchoolClassRepoImpl extends RepositoryImpl<Long,String, SchoolClass
     }
 
     @Override
-    public SchoolClass updateSubjectFromProgram(SchoolClass schoolClass,  Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException {
+    public SchoolClass updateSubjectFromProgram(SchoolClass schoolClass, Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException {
         SchoolClass updatedSchoolClass=schoolClass;
         if(updatedSchoolClass.getProgram().get(day).get(classNumber)==null)
             throw new EntityNotFoundException();

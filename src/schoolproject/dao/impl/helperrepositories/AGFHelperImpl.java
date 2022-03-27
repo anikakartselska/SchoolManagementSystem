@@ -1,10 +1,8 @@
-package schoolproject.dao.impl;
+package schoolproject.dao.impl.helperrepositories;
 
 import schoolproject.dao.AGRHelper;
-import schoolproject.dao.Identifiable;
-import schoolproject.dao.IdentifiableAGR;
+import schoolproject.dao.identifiiables.IdentifiableAGR;
 import schoolproject.dao.exceptions.EntityNotFoundException;
-import schoolproject.model.Lesson;
 import schoolproject.model.StudentFeedback;
 
 public class AGFHelperImpl<K,S,V extends IdentifiableAGR<K,S>> extends RepositoryImpl<K,S,V> implements AGRHelper<K,S,V> {

@@ -1,6 +1,6 @@
-package schoolproject.dao.impl;
+package schoolproject.dao.impl.rolesrepoimpl;
 
-import schoolproject.dao.TeacherRepository;
+import schoolproject.dao.rolerepositories.TeacherRepository;
 import schoolproject.dao.exceptions.BusyClassException;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.SchoolClass;
@@ -8,8 +8,6 @@ import schoolproject.model.Subject;
 import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class TeacherRepositoryImpl extends UserRepositoryImpl<Teacher> implements TeacherRepository  {
     @Override

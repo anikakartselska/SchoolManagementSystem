@@ -1,10 +1,11 @@
-package schoolproject.dao;
+package schoolproject.dao.identifiiables;
 
+import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.model.StudentFeedback;
 
 import java.util.HashMap;
 
-public interface IdentifiableAGR<K,S> extends Identifiable<K,S>{
+public interface IdentifiableAGR<K,S> extends Identifiable<K,S> {
 
     HashMap<Long, StudentFeedback.Absence> getAbsences();
     HashMap<Long, StudentFeedback.Remark> getRemarks();

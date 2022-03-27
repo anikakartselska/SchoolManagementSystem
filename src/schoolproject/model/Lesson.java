@@ -1,10 +1,8 @@
 package schoolproject.model;
 
-import schoolproject.dao.Identifiable;
-import schoolproject.dao.IdentifiableAGR;
+import schoolproject.dao.identifiiables.IdentifiableAGR;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.StringJoiner;
 

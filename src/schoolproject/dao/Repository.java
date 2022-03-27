@@ -3,6 +3,7 @@ package schoolproject.dao;
 
 
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.identifiiables.Identifiable;
 
 import java.util.Collection;
 

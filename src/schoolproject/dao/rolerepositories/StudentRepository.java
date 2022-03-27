@@ -1,12 +1,15 @@
-package schoolproject.dao;
+package schoolproject.dao.rolerepositories;
 
+import schoolproject.dao.AGRHelper;
+import schoolproject.dao.Repository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Parent;
 import schoolproject.model.roles.Student;
 
-public interface StudentRepository extends UserRepository<Student>,Repository<Long,String,Student>,AGRHelper<Long,String,Student > {
+public interface StudentRepository extends UserRepository<Student>, Repository<Long,String,Student>, AGRHelper<Long,String,Student > {
     Student changeNumberInClass(Student student,int newNumber) throws EntityNotFoundException;
     Student changeSchoolClass(Student student, SchoolClass schoolClass) throws EntityNotFoundException;
     Student changeAverageGrade(Student student) throws EntityNotFoundException;

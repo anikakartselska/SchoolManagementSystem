@@ -1,7 +1,7 @@
 package schoolproject.dao;
 
 import schoolproject.dao.exceptions.EntityNotFoundException;
-import schoolproject.model.Lesson;
+import schoolproject.dao.identifiiables.IdentifiableAGR;
 import schoolproject.model.StudentFeedback;
 
 public interface AGRHelper<K,S,V extends IdentifiableAGR<K,S>> {

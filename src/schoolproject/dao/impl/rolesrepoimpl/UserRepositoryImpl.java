@@ -1,11 +1,11 @@
-package schoolproject.dao.impl;
+package schoolproject.dao.impl.rolesrepoimpl;
 
-import schoolproject.dao.Identifiable;
-import schoolproject.dao.UserIdentifiable;
-import schoolproject.dao.UserRepository;
+import schoolproject.dao.identifiiables.Identifiable;
+import schoolproject.dao.identifiiables.UserIdentifiable;
+import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.enums.Gender;
-import schoolproject.model.roles.User;
 
 public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, String>> extends RepositoryImpl<Long,String, V> implements UserRepository<V> {
 

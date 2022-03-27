@@ -1,7 +1,7 @@
 package schoolproject.model.roles;
 
-import schoolproject.dao.IdentifiableAGR;
-import schoolproject.dao.UserIdentifiable;
+import schoolproject.dao.identifiiables.IdentifiableAGR;
+import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.StudentFeedback;
 import schoolproject.model.Subject;

@@ -2,6 +2,7 @@ package schoolproject.dao.impl;
 
 import schoolproject.dao.StudentFeedbackTempRepo;
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.StudentFeedback;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;

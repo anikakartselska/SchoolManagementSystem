@@ -1,12 +1,10 @@
 package schoolproject.model;
 
-import schoolproject.dao.Identifiable;
-import schoolproject.dao.IdentifiableStudentFeedback;
+import schoolproject.dao.identifiiables.Identifiable;
+import schoolproject.dao.identifiiables.IdentifiableStudentFeedback;
 import schoolproject.model.roles.Student;
-import schoolproject.model.roles.Teacher;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.StringJoiner;
 
 public class StudentFeedback {

@@ -1,6 +1,6 @@
-package schoolproject.dao.impl;
+package schoolproject.dao.impl.rolesrepoimpl;
 
-import schoolproject.dao.StudentRepository;
+import schoolproject.dao.rolerepositories.StudentRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.StudentFeedback;

@@ -1,6 +1,6 @@
 package schoolproject.model.roles;
 
-import schoolproject.dao.UserIdentifiable;
+import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 import schoolproject.model.enums.Gender;

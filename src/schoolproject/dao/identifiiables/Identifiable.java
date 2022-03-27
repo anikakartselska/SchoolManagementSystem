@@ -1,4 +1,4 @@
-package schoolproject.dao;
+package schoolproject.dao.identifiiables;
 
 
 

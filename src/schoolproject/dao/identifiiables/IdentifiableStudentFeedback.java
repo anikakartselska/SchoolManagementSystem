@@ -1,4 +1,4 @@
-package schoolproject.dao;
+package schoolproject.dao.identifiiables;
 
 public interface IdentifiableStudentFeedback <T>{
  T getValue();

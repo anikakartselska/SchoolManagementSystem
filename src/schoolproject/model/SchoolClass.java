@@ -1,6 +1,6 @@
 package schoolproject.model;
 
-import schoolproject.dao.Identifiable;
+import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.model.roles.Student;
 import schoolproject.model.roles.Teacher;
 

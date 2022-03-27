@@ -1,7 +1,6 @@
 package schoolproject.model;
 
-import schoolproject.dao.Identifiable;
-import schoolproject.dao.IdentifiableAGR;
+import schoolproject.dao.identifiiables.IdentifiableAGR;
 import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
