@@ -6,6 +6,8 @@ import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Role;
 import schoolproject.model.enums.Status;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.StringJoiner;
 
@@ -20,7 +22,7 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
     private Gender gender;
     private String phoneNumber;
     private String address;
-    private Date birthday;
+    private LocalDate birthday;
 
     public Role getRole() {
         return role;
@@ -71,7 +73,7 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
 
     }
 
-    public User( String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday) {
+    public User( String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.thirdName = thirdName;
@@ -169,11 +171,11 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
         this.address = address;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

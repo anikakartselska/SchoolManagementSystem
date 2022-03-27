@@ -6,6 +6,7 @@ import schoolproject.model.Subject;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Role;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.StringJoiner;
@@ -74,14 +75,14 @@ public Teacher()
         setProgram();
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, Date birthday, HashMap<Long, SchoolClass> teachingClasses) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, HashMap<Long, SchoolClass> teachingClasses) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.teachingClasses = teachingClasses;
         setProgram();
         this.setRole(Role.TEACHER);
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, Date birthday, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, LocalDate birthday, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.teachingClasses = teachingClasses;
         this.ownClass = ownClass;
@@ -97,7 +98,7 @@ public Teacher()
         this.setRole(Role.TEACHER);
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday) {
         super(firstName, secondName, thirdName, email, username, password, gender,phoneNumber, address, birthday);
         this.setRole(Role.TEACHER);
     }

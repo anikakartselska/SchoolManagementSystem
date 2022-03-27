@@ -13,6 +13,7 @@ public class SchoolClass implements Identifiable<Long, String> {
     private HashMap<Long, Student>students=new HashMap<>();
     private HashMap<Long,Lesson> lessons=new HashMap<>();
     private HashMap<Integer,HashMap<Integer,Subject>>program=new HashMap<>();
+
     public SchoolClass(Teacher mainTeacher) {
         this.mainTeacher = mainTeacher;
     }

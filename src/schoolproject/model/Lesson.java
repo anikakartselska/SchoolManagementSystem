@@ -2,6 +2,7 @@ package schoolproject.model;
 
 import schoolproject.dao.identifiiables.IdentifiableAGR;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.StringJoiner;
@@ -9,7 +10,7 @@ import java.util.StringJoiner;
 public class Lesson implements IdentifiableAGR<Long,String> {
     private Long id;
     private Subject subject;
-    private LocalDateTime date;
+    private LocalDate date;
     private SchoolClass schoolClass;
     private HashMap<Long,StudentFeedback.Absence> absences=new HashMap<>();
     private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
@@ -51,20 +52,20 @@ public class Lesson implements IdentifiableAGR<Long,String> {
         return getSubject().getName()+getClass().toString();
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Lesson(Subject subject,LocalDateTime date) {
+    public Lesson(Subject subject, LocalDate date) {
         this.subject = subject;
         this.date=date;
     }
 
-    public Lesson(Subject subject, LocalDateTime date, SchoolClass schoolClass, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
+    public Lesson(Subject subject,  LocalDate date, SchoolClass schoolClass, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
         this.subject = subject;
         this.date = date;
         this.schoolClass = schoolClass;
@@ -74,7 +75,7 @@ public class Lesson implements IdentifiableAGR<Long,String> {
     }
 
 
-    public Lesson(Subject subject, LocalDateTime date, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
+    public Lesson(Subject subject,  LocalDate date, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
         this.subject = subject;
         this.date=date;
         this.absences = absences;

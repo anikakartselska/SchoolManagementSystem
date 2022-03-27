@@ -7,6 +7,7 @@ import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> implements LessonRepository {
@@ -19,7 +20,7 @@ public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> impl
     }
 
     @Override
-    public Lesson changeDate(Lesson lesson, LocalDateTime newDate) throws EntityNotFoundException {
+    public Lesson changeDate(Lesson lesson,  LocalDate newDate) throws EntityNotFoundException {
         Lesson updatedLesson=lesson;
         updatedLesson.setDate(newDate);
         return update(updatedLesson);

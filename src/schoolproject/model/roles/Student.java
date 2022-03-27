@@ -8,6 +8,7 @@ import schoolproject.model.Subject;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Role;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.StringJoiner;
@@ -54,7 +55,7 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
         this.setRole(Role.STUDENT);
     }
 
-    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, int numberInClass, HashMap<Long, Parent> parents, SchoolClass schoolClass) {
+    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, int numberInClass, HashMap<Long, Parent> parents, SchoolClass schoolClass) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.numberInClass = numberInClass;
         this.parents = parents;
@@ -124,7 +125,7 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
         this.setRole(Role.STUDENT);
     }
 
-    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday) {
+    public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.setRole(Role.STUDENT);
     }

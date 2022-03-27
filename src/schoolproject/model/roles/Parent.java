@@ -4,13 +4,14 @@ import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Role;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.StringJoiner;
 
 public class Parent extends User implements UserIdentifiable {
    private HashMap<Long, Student> children=new HashMap<>();
-   private double monthIncome;
+   private double monthIncome=0;
 
     public Parent(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender) {
         super(firstName, secondName, thirdName, email, username, password, gender);
@@ -24,14 +25,14 @@ public class Parent extends User implements UserIdentifiable {
         this.setRole(Role.PARENT);
     }
 
-    public Parent(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, HashMap<Long, Student> children, double monthIncome) {
+    public Parent(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, HashMap<Long, Student> children, double monthIncome) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.children = children;
         this.monthIncome = monthIncome;
         this.setRole(Role.PARENT);
     }
 
-    public Parent(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday) {
+    public Parent(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday) {
         super(firstName, secondName, thirdName, email, username, password, gender,  phoneNumber, address, birthday);
         this.setRole(Role.PARENT);
     }
@@ -42,7 +43,7 @@ public class Parent extends User implements UserIdentifiable {
         this.setRole(Role.PARENT);
     }
 
-    public Parent(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, Date birthday, HashMap<Long, Student> children) {
+    public Parent(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, HashMap<Long, Student> children) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.children = children;
         this.setRole(Role.PARENT);

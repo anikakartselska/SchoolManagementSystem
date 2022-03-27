@@ -4,6 +4,7 @@ import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.IdentifiableStudentFeedback;
 import schoolproject.model.roles.Student;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.StringJoiner;
 
@@ -12,12 +13,12 @@ public class StudentFeedback {
 
     public class Template <T> implements Identifiable<Long, String>, IdentifiableStudentFeedback<T> {
         private Long id;
-        private LocalDateTime date;
+        private LocalDate date;
         private Subject subject;
         private Student student;
         private T value;
 
-        public Template(LocalDateTime date, Subject subject, Student student, T value) {
+        public Template(LocalDate date, Subject subject, Student student, T value) {
             this.date = date;
             this.subject = subject;
             this.student = student;
@@ -59,11 +60,11 @@ public class StudentFeedback {
             return String.valueOf(this.getClass());
         }
 
-        public LocalDateTime getDate() {
+        public LocalDate getDate() {
             return date;
         }
 
-        public void setDate(LocalDateTime date) {
+        public void setDate(LocalDate date) {
             this.date = date;
         }
 
@@ -89,7 +90,7 @@ public class StudentFeedback {
     public class Absence extends Template<Double>{
 
 
-     public Absence(LocalDateTime date, Subject subject, Student student, Double value) {
+     public Absence(LocalDate date, Subject subject, Student student, Double value) {
          super( date, subject, student, value);
      }
 
@@ -102,7 +103,7 @@ public class StudentFeedback {
 
     public class Remark extends Template<String> {
 
-        public Remark( LocalDateTime  date, Subject subject, Student student, String value) {
+        public Remark( LocalDate  date, Subject subject, Student student, String value) {
             super( date, subject, student, value);
         }
         @Override
@@ -113,7 +114,7 @@ public class StudentFeedback {
     }
     public class Grade extends Template<Integer>{
 
-        public Grade( LocalDateTime  date, Subject subject, Student student, Integer value) {
+        public Grade( LocalDate  date, Subject subject, Student student, Integer value) {
             super(date, subject, student, value);
         }
         @Override

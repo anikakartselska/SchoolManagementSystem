@@ -7,12 +7,13 @@ import schoolproject.model.StudentFeedback;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class StudentFeedbackTempRepoImpl<T> extends RepositoryImpl<Long,String, StudentFeedback.Template<T>> implements StudentFeedbackTempRepo<T> {
 
     @Override
-    public StudentFeedback.Template<T> changeDate(StudentFeedback.Template<T> temp, LocalDateTime newDate) throws EntityNotFoundException {
+    public StudentFeedback.Template<T> changeDate(StudentFeedback.Template<T> temp, LocalDate newDate) throws EntityNotFoundException {
         StudentFeedback.Template<T> updated=temp;
         updated.setDate(newDate);
         return update(updated);
