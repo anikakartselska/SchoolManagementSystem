@@ -9,6 +9,9 @@ import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;
+import schoolproject.model.roles.Teacher;
+
+import java.util.HashMap;
 
 public class SchoolClassRepoImpl extends RepositoryImpl<Long,String, SchoolClass> implements SchoolClassRepo {
     @Override
@@ -112,19 +115,21 @@ public class SchoolClassRepoImpl extends RepositoryImpl<Long,String, SchoolClass
     @Override
     public SchoolClass removeSubjectFromWholeProgram(SchoolClass schoolClass, Subject subject) throws EntityNotFoundException {
         SchoolClass updatedSchoolClass=schoolClass;
-        for(int i=schoolClass.getProgram().size();i>0;i--)
-            for(int j=schoolClass.getProgram().get(i).size();j>0;j--)
-                if(schoolClass.getProgram().get(i).get(j).equals(subject))
-                    schoolClass.getProgram().get(i).remove(j);
+
+        updatedSchoolClass.getProgram().forEach((key,value)->
+                value.entrySet().removeIf(e -> e.getValue().equals(subject)));
+
         return update(updatedSchoolClass);
     }
     @Override
     public SchoolClass updateSubjectInWholeProgram(SchoolClass schoolClass, Subject subject) throws EntityNotFoundException {
         SchoolClass updatedSchoolClass=schoolClass;
-        for(int i=schoolClass.getProgram().size();i>0;i--)
-            for(int j=schoolClass.getProgram().get(i).size();j>0;j--)
-                if(schoolClass.getProgram().get(i).get(j).equals(subject))
-                    schoolClass.getProgram().get(i).put(j,subject);
+        updatedSchoolClass.getProgram().forEach((key,value)->
+                {for (HashMap.Entry<Integer, Subject> entry : value.entrySet())
+                    if(entry.getValue().equals(subject))
+                        entry.setValue(subject);
+                }
+        );
         return update(updatedSchoolClass);
     }
     @Override

@@ -19,6 +19,21 @@ public class Subject implements IdentifiableAGR<Long, String> {
     private HashMap<Long,Lesson>lessons;
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Subject)) return false;
+
+        Subject subject = (Subject) o;
+
+        return getId().equals(subject.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
+
+    @Override
     public String toString() {
         return new StringJoiner(", ", Subject.class.getSimpleName() + "[", "]")
                 .add("id=" + id)

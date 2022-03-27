@@ -25,7 +25,7 @@ public class HeadTeacher extends User implements UserIdentifiable {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", HeadTeacher.class.getSimpleName() , super.toString())
+        return new StringJoiner(", ", HeadTeacher.class.getSimpleName() + super.toString(),"")
                 .toString();
     }
 }

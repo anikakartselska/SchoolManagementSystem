@@ -26,7 +26,7 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Student.class.getSimpleName() , super.toString())
+        return new StringJoiner(",", Student.class.getSimpleName() + super.toString(),"")
                 .add("numberInClass=" + numberInClass)
                 .add("parents=" + parents)
                 .add("schoolClass=" + schoolClass)

@@ -54,7 +54,7 @@ public class TeacherRepositoryImpl extends UserRepositoryImpl<Teacher> implement
     public Teacher addSubjectToProgram(Teacher teacher, Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException {
         Teacher updatedTeacher=teacher;
 
-           if(updatedTeacher.getProgram().get(day).putIfAbsent(classNumber,subject)==null)
+           if(updatedTeacher.getProgram().get(day).putIfAbsent(classNumber,subject)!=null)
                throw new BusyClassException();
         return update(updatedTeacher);
     }
@@ -79,19 +79,21 @@ public class TeacherRepositoryImpl extends UserRepositoryImpl<Teacher> implement
  @Override
     public Teacher removeSubjectFromWholeProgram(Teacher teacher,Subject subject) throws EntityNotFoundException {
         Teacher updatedTeacher=teacher;
-        for(int i=teacher.getProgram().size();i>0;i--)
-            for(int j=teacher.getProgram().get(i).size();j>0;j--)
-                if(teacher.getProgram().get(i).get(j).equals(subject))
-                    teacher.getProgram().get(i).remove(j);
+
+     updatedTeacher.getProgram().forEach((key,value)->
+            value.entrySet().removeIf(e -> e.getValue().equals(subject)));
+
         return update(updatedTeacher);
     }
     @Override
     public Teacher updateSubjectInWholeProgram(Teacher teacher,Subject subject) throws EntityNotFoundException {
         Teacher updatedTeacher=teacher;
-        for(int i=teacher.getProgram().size();i>0;i--)
-            for(int j=teacher.getProgram().get(i).size();j>0;j--)
-                if(teacher.getProgram().get(i).get(j).equals(subject))
-                    teacher.getProgram().get(i).put(j,subject);
+        updatedTeacher.getProgram().forEach((key,value)->
+                {for (HashMap.Entry<Integer, Subject> entry : value.entrySet())
+                    if(entry.getValue().equals(subject))
+                        entry.setValue(subject);
+                }
+        );
         return update(updatedTeacher);
     }
 

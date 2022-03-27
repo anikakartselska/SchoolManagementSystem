@@ -1,6 +1,7 @@
 package schoolproject.model.roles;
 
 import schoolproject.dao.identifiiables.Identifiable;
+import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Role;
 import schoolproject.model.enums.Status;
@@ -8,7 +9,7 @@ import schoolproject.model.enums.Status;
 import java.util.Date;
 import java.util.StringJoiner;
 
-public class User implements Identifiable<Long, String> {
+public class User implements Identifiable<Long, String>, UserIdentifiable {
     private long id;
     private String firstName;
     private String secondName;

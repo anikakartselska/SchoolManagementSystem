@@ -14,11 +14,11 @@ public class Teacher extends User implements UserIdentifiable {
 
     private HashMap<Long, SchoolClass>teachingClasses=new HashMap<>();
    private SchoolClass ownClass;
-    private HashMap<Integer,HashMap<Integer,Subject>>program;
+    private HashMap<Integer,HashMap<Integer,Subject>>program=new HashMap<Integer,HashMap<Integer, Subject>>();
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Teacher.class.getSimpleName() , super.toString())
+        return new StringJoiner(", ", Teacher.class.getSimpleName() + super.toString(),"")
                 .add("teachingClasses=" + teachingClasses)
                 .add("ownClass=" + ownClass)
                 .add("program=" + program)
@@ -46,6 +46,7 @@ public class Teacher extends User implements UserIdentifiable {
     }
 
     public void setProgram() {
+
         this.program.put(1,new HashMap<>());
         this.program.put(2,new HashMap<>());
         this.program.put(3,new HashMap<>());
@@ -54,7 +55,9 @@ public class Teacher extends User implements UserIdentifiable {
     }
 
 public Teacher()
-{}
+{
+    setProgram();
+}
 
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
         super(firstName, secondName, thirdName, email, username, password, gender);
