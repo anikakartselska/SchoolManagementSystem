@@ -8,9 +8,9 @@ import schoolproject.model.roles.Student;
 public class ParentRepositoryImpl extends UserRepositoryImpl<Parent> implements ParentRepository {
     @Override
     public Parent changeMonthIncome(Parent parent, Double income) throws EntityNotFoundException {
-       Parent updatedParent=parent;
-        updatedParent.setMonthIncome(income);
-        return update(updatedParent);
+
+         parent.setMonthIncome(income);
+        return parent;
     }
 
     @Override

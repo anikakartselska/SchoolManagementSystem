@@ -14,17 +14,13 @@ public interface UserService <V>{
     V register(V user) ;
     V updateUser(V user) throws EntityNotFoundException, InvalidEntityDataException;
     V deleteAccount(V user) throws EntityNotFoundException;
-    V changeOwnFirstName(V user,String newFirstName) throws EntityNotFoundException;
-    V changeOwnSecondName(V user,String newSecondName);
-    V changeOwnThirdName(V user,String newThirdName);
-    V changeOwnPassword(V user,String newPassword);
-    V changeOwnGender(V user, Gender newGender);
-    V changeOwnPhoneNumber(V user,String newPhoneNumber);
-    V changeAddress(V user,String newAddress);
-    V logIn(String email,String username,String password);
-    /*Collection<V> findAll();
-    V findById(K id);
-    V add(V entity);
-    V update(V entity) throws EntityNotFoundException;
-    V delete(V entity) throws EntityNotFoundException;*/
+    V changeOwnFirstName(V user,String newFirstName) throws EntityNotFoundException, InvalidEntityDataException;
+    V changeOwnSecondName(V user,String newSecondName) throws InvalidEntityDataException, EntityNotFoundException;
+    V changeOwnThirdName(V user,String newThirdName) throws InvalidEntityDataException, EntityNotFoundException;
+    V changeOwnPassword(V user,String newPassword) throws InvalidEntityDataException, EntityNotFoundException;
+    V changeOwnGender(V user, Gender newGender) throws EntityNotFoundException;
+    V changeOwnPhoneNumber(V user,String newPhoneNumber) throws InvalidEntityDataException, EntityNotFoundException;
+    V changeAddress(V user,String newAddress) throws EntityNotFoundException;
+    V logIn(String email,String username,String password) throws InvalidEntityDataException, EntityNotFoundException;
+
 }

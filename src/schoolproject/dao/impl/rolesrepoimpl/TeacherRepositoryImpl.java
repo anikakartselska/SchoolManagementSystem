@@ -97,23 +97,5 @@ public class TeacherRepositoryImpl extends UserRepositoryImpl<Teacher> implement
         return update(updatedTeacher);
     }
 
-    public static void main(String[] args) {
-        HashMap<Integer,HashMap<Integer,String>> hm=new HashMap<>();
-        hm.put(1,new HashMap<>());
-        hm.put(2,new HashMap<>());
-        hm.get(1).put(1,"Anika");
-        hm.get(1).put(2,"Raya");
-        hm.get(1).put(3,"Anika");
-        hm.get(2).put(1,"Anika");
-        hm.get(2).put(2,"Raya");
-        hm.get(2).put(3,"Anika");
-        System.out.println(hm.size());
-        System.out.println(hm.get(1).size());
-        System.out.println(hm);
-        for(int i=hm.size();i>0;i--)
-            for(int j=hm.get(i).size();j>0;j--)
-                if(hm.get(i).get(j).equals("Anika"))
-                    hm.get(i).put(j,"Raya");
-        System.out.println(hm);
-    }
+
 }

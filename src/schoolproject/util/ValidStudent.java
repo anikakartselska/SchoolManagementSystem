@@ -1,19 +1,19 @@
 package schoolproject.util;
 
 import schoolproject.dao.exceptions.InvalidEntityDataException;
-import schoolproject.dao.rolerepositories.UserRepository;
-import schoolproject.model.roles.Parent;
+import schoolproject.dao.rolerepositories.StudentRepository;
 import schoolproject.model.roles.Student;
 
 public class ValidStudent {
-    private UserRepository userRepository;
+    private final StudentRepository studentRepository;
 
-    public ValidStudent(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ValidStudent(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
+
     public void validate(Student student) throws InvalidEntityDataException {
-        new ValidUser(userRepository).validate(student);
+        new ValidUser<>(studentRepository).validate(student);
 
         if(student.getAverageGrade()<2 || student.getAverageGrade()>6)
         {

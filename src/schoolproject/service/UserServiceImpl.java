@@ -20,6 +20,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, String>> implements UserService<V>{
 
@@ -61,7 +63,6 @@ public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, Str
 
 
             userValidator.validate(user);
-            System.out.println("sa");
             return userRepository.update(user);
 
     }
@@ -72,54 +73,94 @@ public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, Str
     }
 
     @Override
-    public V changeOwnFirstName(V user, String newFirstName)  {
+    public V changeOwnFirstName(V user, String newFirstName) throws InvalidEntityDataException, EntityNotFoundException {
 
+        var firstNameLen = newFirstName.trim().length();
+        if(firstNameLen < 2 || firstNameLen > 20){
 
-        try {
-         updateUser(userRepository.changeFirstName(user,newFirstName));
-
-        } catch (InvalidEntityDataException | EntityNotFoundException e) {
-            e.printStackTrace();
-
+            throw  new InvalidEntityDataException(user.getClass().getName()+ " firstName "+ newFirstName+
+                    " First name should be between 1 and 20 characters");
         }
-
+        userRepository.changeFirstName(user,newFirstName);
         return user;
     }
 
     @Override
-    public V changeOwnSecondName(V user, String newSecondName) {
-        return null;
+    public V changeOwnSecondName(V user, String newSecondName) throws InvalidEntityDataException, EntityNotFoundException {
+        var secondNameLen = newSecondName.trim().length();
+        if(secondNameLen < 2 || secondNameLen > 20){
+
+            throw  new InvalidEntityDataException(user.getClass().getName()+ " firstName "+ newSecondName+
+                    " Second name should be between 1 and 20 characters");
+        }
+        userRepository.changeSecondName(user,newSecondName);
+        return user;
     }
 
     @Override
-    public V changeOwnThirdName(V user, String newThirdName) {
-        return null;
+    public V changeOwnThirdName(V user, String newThirdName) throws InvalidEntityDataException, EntityNotFoundException {
+        var thirdNameLen = newThirdName.trim().length();
+        if(thirdNameLen < 2 || thirdNameLen > 20){
+
+            throw  new InvalidEntityDataException(user.getClass().getName()+ " firstName "+ newThirdName+
+                    " Second name should be between 1 and 20 characters");
+        }
+        userRepository.changeThirdName(user,newThirdName);
+        return user;
     }
 
     @Override
-    public V changeOwnPassword(V user, String newPassword) {
-        return null;
+    public V changeOwnPassword(V user, String newPassword) throws InvalidEntityDataException, EntityNotFoundException {
+       Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
+       Matcher matcher = pattern.matcher(newPassword);
+
+            if (!matcher.matches()) {
+                throw  new InvalidEntityDataException(user.getClass().getName() + "password:"+
+                        " The password must contain at least one digit, one capital letter, and one sign different than letter or digit");
+            }
+            else if(user.getPassword().equals(newPassword))
+            {
+                throw  new InvalidEntityDataException(user.getClass().getName() + "password:"+
+                        " You have entered you old password");
+            }
+            userRepository.changePassword(user,newPassword);
+            return user;
     }
 
     @Override
-    public V changeOwnGender(V user, Gender newGender) {
-        return null;
+    public V changeOwnGender(V user, Gender newGender) throws EntityNotFoundException {
+        return userRepository.changeGender(user,newGender);
     }
 
     @Override
-    public V changeOwnPhoneNumber(V user, String newPhoneNumber) {
-        return null;
+    public V changeOwnPhoneNumber(V user, String newPhoneNumber) throws InvalidEntityDataException, EntityNotFoundException {
+       Pattern pattern = Pattern.compile("^[0-9]{10}$");
+       Matcher matcher = pattern.matcher(newPhoneNumber);
+
+        if (!matcher.matches() || userRepository.findByPhoneNumber(newPhoneNumber)!=null) {
+            throw  new InvalidEntityDataException(user.getClass().getName()+" phone number "+newPhoneNumber+
+                    " Phone number should be 10 digits or is already used.");
+        }
+        return userRepository.changePhoneNumber(user,newPhoneNumber);
     }
 
     @Override
-    public V changeAddress(V user, String newAddress) {
-        return null;
+    public V changeAddress(V user, String newAddress) throws EntityNotFoundException {
+        return userRepository.changeAddress(user,newAddress);
     }
 
     @Override
-    public V logIn(String email, String username, String password) {
-        return null;
-    }
+    public V logIn(String email, String username, String password) throws InvalidEntityDataException, EntityNotFoundException {
+        V log=userRepository.findByEmail(email);
+        if(log!=null)
+        {
+            if(!username.equals(log.getUsername())|| !password.equals(log.getPassword()))
+            {throw new InvalidEntityDataException("Invalid username or password");
+        } }
+        else {throw new EntityNotFoundException("User with this email doesn't exist");}
+
+
+        return log;}
 
 
     public static void main(String[] args) {
@@ -137,8 +178,10 @@ public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, Str
             e.printStackTrace();
         }
         try {
-            teacherService.changeOwnFirstName(teacherService.getUserById(2L),"Anikaeqka");
-        } catch (EntityNotFoundException e) {
+            teacherService.changeOwnFirstName(teacherService.getUserById(2L),"Raya");
+            teacherService.changeOwnPassword(teacherService.getUserById(2L),"Anikaaa445$");
+            teacherService.changeOwnGender(teacherService.getUserById(2L),Gender.MALE);
+        } catch (EntityNotFoundException | InvalidEntityDataException e) {
             e.printStackTrace();
         }
         try {
@@ -147,6 +190,14 @@ public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, Str
             e.printStackTrace();
         }
 
+
+        try {
+            teacherService.logIn("aa@abv.bg","anika","kk");
+        } catch (InvalidEntityDataException e) {
+            e.printStackTrace();
+        } catch (EntityNotFoundException e) {
+            e.printStackTrace();
+        }
   /*      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         try {

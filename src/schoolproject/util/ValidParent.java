@@ -2,6 +2,7 @@ package schoolproject.util;
 
 import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.impl.rolesrepoimpl.UserRepositoryImpl;
+import schoolproject.dao.rolerepositories.ParentRepository;
 import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.roles.Parent;
@@ -16,14 +17,14 @@ import java.util.stream.Collectors;
 
 public class ValidParent {
 
-    private UserRepository userRepository;
+    private ParentRepository parentRepository;
 
-    public ValidParent(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ValidParent(ParentRepository parentRepository) {
+        this.parentRepository = parentRepository;
     }
 
     public void validate(Parent parent) throws InvalidEntityDataException {
-        new ValidUser(userRepository).validate(parent);
+        new ValidUser<Parent>(parentRepository).validate(parent);
 
         if(parent.getMonthIncome()<0)
         {

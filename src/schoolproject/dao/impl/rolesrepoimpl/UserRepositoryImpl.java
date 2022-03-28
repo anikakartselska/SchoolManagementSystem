@@ -11,9 +11,10 @@ public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, 
 
     @Override
     public V changeFirstName(V user, String newFirstName) throws EntityNotFoundException {
-        V updatedUser=user;
-       updatedUser.setFirstName(newFirstName);
-      return update(updatedUser);
+
+       user.setFirstName(newFirstName);
+       return user;
+
     }
 
     @Override

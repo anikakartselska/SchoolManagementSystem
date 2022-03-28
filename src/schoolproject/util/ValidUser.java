@@ -22,7 +22,7 @@ public class ValidUser<V extends UserIdentifiable & Identifiable<Long, String>> 
     public void validate(V user) throws InvalidEntityDataException {
 
         var firstNameLen = user.getFirstName().trim().length();
-        if(firstNameLen < 2 || firstNameLen > 20){
+        if(firstNameLen < 1 || firstNameLen > 20){
 
                    throw  new InvalidEntityDataException(user.getClass().getName()+ " firstName "+ user.getFirstName()+
                             " First name should be between 1 and 20 characters");
@@ -59,8 +59,8 @@ public class ValidUser<V extends UserIdentifiable & Identifiable<Long, String>> 
         }
         pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
         matcher = pattern.matcher(user.getPassword());
-        if (!matcher.matches()) {
-            if (!matcher.matches() || userRepository.findByPhoneNumber(user.getPhoneNumber())!=null) {
+
+            if (!matcher.matches()) {
                 throw  new InvalidEntityDataException(user.getClass().getName() + "password:"+
                                 " The password must contain at least one digit, one capital letter, and one sign different than letter or digit");
          }
@@ -72,4 +72,4 @@ public class ValidUser<V extends UserIdentifiable & Identifiable<Long, String>> 
 
 
 }
-}
+
