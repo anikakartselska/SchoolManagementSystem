@@ -12,8 +12,8 @@ import java.util.Map;
 
 public class RepositoryImpl<K,S,V extends Identifiable<K,S>> implements Repository<K,S,V> {
 
-    private Map<K, V> entities = new HashMap<>();
-    private IdGenerator<Long> idGenerator= new LongIdGenerator();
+    private final Map<K, V> entities = new HashMap<>();
+    private final IdGenerator<Long> idGenerator= new LongIdGenerator();
 
 
     @Override

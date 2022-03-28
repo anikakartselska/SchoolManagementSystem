@@ -22,5 +22,5 @@ public interface UserService <V>{
     V changeOwnPhoneNumber(V user,String newPhoneNumber) throws InvalidEntityDataException, EntityNotFoundException;
     V changeAddress(V user,String newAddress) throws EntityNotFoundException;
     V logIn(String email,String username,String password) throws InvalidEntityDataException, EntityNotFoundException;
-
+    void showUserInfo(String email,String username,String password);
 }

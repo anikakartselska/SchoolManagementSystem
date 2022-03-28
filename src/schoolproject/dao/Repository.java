@@ -9,11 +9,11 @@ import java.util.Collection;
 
 public interface Repository<K,S,V extends Identifiable<K,S>> {
 
-    public interface IdGenerator<K>{
+    interface IdGenerator<K>{
         K getNextId();
     }
 
-    public class LongIdGenerator implements IdGenerator<Long>
+     class LongIdGenerator implements IdGenerator<Long>
     { private long lastId=0;
         @Override
         public Long getNextId() {

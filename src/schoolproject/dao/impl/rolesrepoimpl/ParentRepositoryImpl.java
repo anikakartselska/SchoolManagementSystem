@@ -10,36 +10,36 @@ public class ParentRepositoryImpl extends UserRepositoryImpl<Parent> implements 
     public Parent changeMonthIncome(Parent parent, Double income) throws EntityNotFoundException {
 
          parent.setMonthIncome(income);
-        return parent;
+        return update(parent);
     }
 
     @Override
     public Parent addStudent(Parent parent, Student student) throws EntityNotFoundException {
-        Parent updatedParent=parent;
-        updatedParent.getChildren().put(student.getId(),student);
-        return update(updatedParent);
+
+        parent.getChildren().put(student.getId(),student);
+        return update(parent);
     }
 
     @Override
     public Parent removeStudent(Parent parent, Student student) throws EntityNotFoundException {
-        Parent updatedParent=parent;
-        if(updatedParent.getChildren().get(student.getId())==null)
+
+        if(parent.getChildren().get(student.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedParent.getChildren().remove(student.getId());
+            parent.getChildren().remove(student.getId());
         }
 
-        return update(updatedParent);
+        return update(parent);
     }
 
     @Override
     public Parent updateStudent(Parent parent, Student student) throws EntityNotFoundException {
-        Parent updatedParent=parent;
-        if(updatedParent.getChildren().get(student.getId())==null)
+
+        if(parent.getChildren().get(student.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedParent.getChildren().put(student.getId(),student);
+            parent.getChildren().put(student.getId(),student);
         }
-        return update(updatedParent);
+        return update(parent);
     }
 }

@@ -8,29 +8,27 @@ import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> implements LessonRepository {
     @Override
     public Lesson changeSubject(Lesson lesson, Subject newSubject) throws EntityNotFoundException {
-        Lesson updatedLesson=lesson;
-        updatedLesson.setSubject(newSubject);
-        return update(updatedLesson);
+        lesson.setSubject(newSubject);
+        return update(lesson);
 
     }
 
     @Override
     public Lesson changeDate(Lesson lesson,  LocalDate newDate) throws EntityNotFoundException {
-        Lesson updatedLesson=lesson;
-        updatedLesson.setDate(newDate);
-        return update(updatedLesson);
+
+        lesson.setDate(newDate);
+        return update(lesson);
     }
 
     @Override
     public Lesson changeClass(Lesson lesson, SchoolClass newSchoolClass) throws EntityNotFoundException {
-        Lesson updatedLesson=lesson;
-        updatedLesson.setSchoolClass(newSchoolClass);
-        return update(updatedLesson);
+        lesson.setSchoolClass(newSchoolClass);
+        return update(lesson);
     }
 
 

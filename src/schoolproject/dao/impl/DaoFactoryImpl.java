@@ -33,7 +33,7 @@ public class DaoFactoryImpl implements DaoFactory {
 
     @Override
     public UserRepository<User> createUserRepository() {
-        return new UserRepositoryImpl<User>();
+        return new UserRepositoryImpl<>();
     }
 
     @Override

@@ -11,76 +11,75 @@ import schoolproject.model.roles.Teacher;
 public class SubjectRepositoryImpl extends AGFHelperImpl<Long,String,Subject> implements SubjectRepository {
     @Override
     public Subject changeName(Subject subject, String newName) throws EntityNotFoundException {
-        Subject updatedSubject=subject;
-        updatedSubject.setSubName(newName);
-        return update(updatedSubject);
+
+        subject.setSubName(newName);
+        return update(subject);
     }
 
     @Override
     public Subject changeTeacher(Subject subject, Teacher newTeacher) throws EntityNotFoundException {
-        Subject updatedSubject=subject;
-        updatedSubject.setTeacher(newTeacher);
-        return update(updatedSubject);
+
+        subject.setTeacher(newTeacher);
+        return update(subject);
     }
 
     @Override
     public Subject changeClass(Subject subject, SchoolClass newClass) throws EntityNotFoundException {
-        Subject updatedSubject=subject;
-        updatedSubject.setSchoolClass(newClass);
-        return update(updatedSubject);
+
+        subject.setSchoolClass(newClass);
+        return update(subject);
     }
 
     @Override
     public Subject changeWeeklyLessons(Subject subject, Integer weeklyLessons) throws EntityNotFoundException {
-        Subject updatedSubject=subject;
-        updatedSubject.setWeeklyLessons(weeklyLessons);
-        return update(updatedSubject);
+
+        subject.setWeeklyLessons(weeklyLessons);
+        return update(subject);
     }
 
     @Override
     public Subject changeAverageGrade(Subject subject) throws EntityNotFoundException {
-        Subject updatedSubject=subject;
+
         double average=0;
         var i=0;
-        for(StudentFeedback.Grade grade: updatedSubject.getGrades().values())
+        for(StudentFeedback.Grade grade: subject.getGrades().values())
         { average+= grade.getValue();
             i++;}
 
-        updatedSubject.setAverageGrade(average/i);
-        return update(updatedSubject);
+        subject.setAverageGrade(average/i);
+        return update(subject);
     }
 
     @Override
     public Subject addLesson(Subject subject, Lesson lesson) throws EntityNotFoundException {
 
-        Subject updatedSubject=subject;
-        updatedSubject.getLessons().put(lesson.getId(),lesson);
-        return update(updatedSubject);
+        subject.getLessons().put(lesson.getId(),lesson);
+        return update(subject);
     }
 
     @Override
     public Subject updateLesson(Subject subject, Lesson lesson) throws EntityNotFoundException {
-        Subject updatedSubject=subject;
 
-        if(updatedSubject.getLessons().get(lesson.getId())==null)
+
+        if(subject.getLessons().get(lesson.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedSubject.getLessons().put(lesson.getId(),lesson);
+            subject.getLessons().put(lesson.getId(),lesson);
         }
 
-        return update(updatedSubject);
+        return update(subject);
     }
 
     @Override
     public Subject deleteLesson(Subject subject, Lesson lesson) throws EntityNotFoundException {
-        Subject updatedSubject=subject;
 
-        if(updatedSubject.getLessons().get(lesson.getId())==null)
+
+        if(subject.getLessons().get(lesson.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedSubject.getLessons().remove(lesson.getId());
+            subject.getLessons().remove(lesson.getId());
         }
 
-        return update(updatedSubject);
+        return update(subject);
     }
 }

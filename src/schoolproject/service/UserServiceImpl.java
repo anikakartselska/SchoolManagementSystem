@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, String>> implements UserService<V>{
+public abstract class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, String>> implements UserService<V>{
 
     public UserServiceImpl(UserRepository<V> userRepository, ValidUser<V> userValidator) {
         this.userRepository = userRepository;

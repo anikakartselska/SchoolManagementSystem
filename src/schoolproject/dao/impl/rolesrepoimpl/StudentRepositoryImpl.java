@@ -11,202 +11,198 @@ import schoolproject.model.roles.Student;
 public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implements StudentRepository {
 
 
-
-
-
     @Override
     public Student addAbsence(Student student, StudentFeedback.Absence newAbsence) throws EntityNotFoundException {
-        Student updatedStudent=student;
-        updatedStudent.getAbsences().put(newAbsence.getId(),newAbsence);
-        return update(updatedStudent);
+
+        student.getAbsences().put(newAbsence.getId(),newAbsence);
+        return update(student);
 
     }
 
     @Override
     public Student addRemark(Student student, StudentFeedback.Remark newRemark) throws EntityNotFoundException {
 
-        Student updatedStudent=student;
-        updatedStudent.getRemarks().put(newRemark.getId(),newRemark);
-        return update(updatedStudent);
+
+        student.getRemarks().put(newRemark.getId(),newRemark);
+        return update(student);
     }
 
     @Override
     public Student addGrade(Student student, StudentFeedback.Grade newGrade) throws EntityNotFoundException {
-        Student updatedStudent=student;
-        updatedStudent.getGrades().put(newGrade.getId(),newGrade);
 
-        return update(updatedStudent);
+        student.getGrades().put(newGrade.getId(),newGrade);
+
+        return update(student);
     }
 
     @Override
     public Student removeAbsence(Student student, StudentFeedback.Absence removeAbsence) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getAbsences().get(removeAbsence.getId())==null)
+
+        if(student.getAbsences().get(removeAbsence.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getAbsences().remove(removeAbsence.getId());
+            student.getAbsences().remove(removeAbsence.getId());
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student removeRemark(Student student, StudentFeedback.Remark removeRemark) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getRemarks().get(removeRemark.getId())==null)
+
+        if(student.getRemarks().get(removeRemark.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getRemarks().remove(removeRemark.getId());
+            student.getRemarks().remove(removeRemark.getId());
         }
 
-        return update(updatedStudent);
+        return update(student);
 
     }
 
     @Override
     public Student removeGrade(Student student, StudentFeedback.Grade removeGrade) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getGrades().get(removeGrade.getId())==null)
+
+        if(student.getGrades().get(removeGrade.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getGrades().remove(removeGrade.getId());
+            student.getGrades().remove(removeGrade.getId());
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student updateAbsence(Student student, StudentFeedback.Absence newAbsence) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getAbsences().get(newAbsence.getId())==null)
+        if(student.getAbsences().get(newAbsence.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getAbsences().put(newAbsence.getId(),newAbsence);
+            student.getAbsences().put(newAbsence.getId(),newAbsence);
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student updateRemark(Student student, StudentFeedback.Remark newRemark) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getRemarks().get(newRemark.getId())==null)
+
+        if(student.getRemarks().get(newRemark.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getRemarks().put(newRemark.getId(),newRemark);
+            student.getRemarks().put(newRemark.getId(),newRemark);
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student updateGrade(Student student, StudentFeedback.Grade newGrade) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getGrades().get(newGrade.getId())==null)
+
+        if(student.getGrades().get(newGrade.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getGrades().put(newGrade.getId(),newGrade);
+            student.getGrades().put(newGrade.getId(),newGrade);
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student changeNumberInClass(Student student, int newNumber) throws EntityNotFoundException {
-        Student updatedStudent=student;
-        updatedStudent.setNumberInClass(newNumber);
-        return update(updatedStudent);
+
+        student.setNumberInClass(newNumber);
+        return update(student);
     }
 
     @Override
     public Student changeSchoolClass(Student student, SchoolClass schoolClass) throws EntityNotFoundException {
-        Student updatedStudent=student;
-        updatedStudent.setSchoolClass(schoolClass);
-        return update(updatedStudent);
+
+        student.setSchoolClass(schoolClass);
+        return update(student);
     }
 
     @Override
     public Student changeAverageGrade(Student student) throws EntityNotFoundException {
-        Student updatedStudent=student;
+
         double average=0;
         var i=0;
-        for(StudentFeedback.Grade grade: updatedStudent.getGrades().values())
+        for(StudentFeedback.Grade grade: student.getGrades().values())
         { average+= grade.getValue();
         i++;}
 
-        updatedStudent.setAverageGrade(average/i);
-        return update(updatedStudent);
+        student.setAverageGrade(average/i);
+        return update(student);
     }
 
     @Override
     public Student addParent(Student student, Parent parent) throws EntityNotFoundException {
-        Student updatedStudent=student;
-        updatedStudent.getParents().put(parent.getId(),parent);
-        return update(updatedStudent);
+
+        student.getParents().put(parent.getId(),parent);
+        return update(student);
     }
 
     @Override
     public Student addSubject(Student student, Subject subject) throws EntityNotFoundException {
-        Student updatedStudent=student;
-        updatedStudent.getSubjects().put(subject.getId(),subject);
-        return update(updatedStudent);
+
+        student.getSubjects().put(subject.getId(),subject);
+        return update(student);
     }
 
     @Override
     public Student removeParent(Student student, Parent parent) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getParents().get(parent.getId())==null)
+
+        if(student.getParents().get(parent.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getParents().remove(parent.getId());
+            student.getParents().remove(parent.getId());
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student removeSubject(Student student, Subject subject) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getSubjects().get(subject.getId())==null)
+
+        if(student.getSubjects().get(subject.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getSubjects().remove(subject.getId());
+            student.getSubjects().remove(subject.getId());
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student updateParent(Student student, Parent parent) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getParents().get(parent.getId())==null)
+
+        if(student.getParents().get(parent.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getParents().put(parent.getId(),parent);
+            student.getParents().put(parent.getId(),parent);
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 
     @Override
     public Student updateSubject(Student student, Subject subject) throws EntityNotFoundException {
-        Student updatedStudent=student;
 
-        if(updatedStudent.getSubjects().get(subject.getId())==null)
+
+        if(student.getSubjects().get(subject.getId())==null)
             throw new EntityNotFoundException();
         else {
-            updatedStudent.getSubjects().put(subject.getId(),subject);
+            student.getSubjects().put(subject.getId(),subject);
         }
 
-        return update(updatedStudent);
+        return update(student);
     }
 }

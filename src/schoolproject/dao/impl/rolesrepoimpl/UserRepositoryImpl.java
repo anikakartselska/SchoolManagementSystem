@@ -13,51 +13,50 @@ public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, 
     public V changeFirstName(V user, String newFirstName) throws EntityNotFoundException {
 
        user.setFirstName(newFirstName);
-       return user;
+       return update(user);
 
     }
 
     @Override
     public V changeSecondName(V user, String newSecondName) throws EntityNotFoundException {
-        V updatedUser=user;
-        updatedUser.setSecondName(newSecondName);
-        return update(updatedUser);
+
+        user.setSecondName(newSecondName);
+        return update(user);
     }
 
     @Override
     public V changeThirdName(V user, String newThirdName) throws EntityNotFoundException {
-        V updatedUser=user;
-        updatedUser.setThirdName(newThirdName);
-        return update(updatedUser);
+
+        user.setThirdName(newThirdName);
+        return update(user);
     }
 
     @Override
     public V changePassword(V user, String newPassword) throws EntityNotFoundException {
 
-        V updatedUser=user;
-        updatedUser.setPassword(newPassword);
-        return update(updatedUser);
+        user.setPassword(newPassword);
+        return update(user);
     }
 
     @Override
     public V changeGender(V user, Gender newGender) throws EntityNotFoundException {
-        V updatedUser=user;
-        updatedUser.setGender(newGender);
-        return update(updatedUser);
+
+        user.setGender(newGender);
+        return update(user);
     }
 
     @Override
     public V changePhoneNumber(V user, String newPhoneNumber) throws EntityNotFoundException {
-        V updatedUser=user;
-        updatedUser.setPhoneNumber(newPhoneNumber);
-        return update(updatedUser);
+
+        user.setPhoneNumber(newPhoneNumber);
+        return update(user);
     }
 
     @Override
     public V changeAddress(V user, String newAddress) throws EntityNotFoundException {
-        V updatedUser=user;
-        updatedUser.setAddress(newAddress);
-        return update(updatedUser);
+
+        user.setAddress(newAddress);
+        return update(user);
     }
 
     @Override
