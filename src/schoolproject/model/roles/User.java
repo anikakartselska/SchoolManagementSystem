@@ -47,11 +47,9 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
     private Status status=Status.PENDING;
     @Override
     public String toString() {
-        return new StringJoiner(", ",  "[", "]")
-                .add("id=" + id)
-                .add("firstName='" + firstName + "'")
-                .add("secondName='" + secondName + "'")
-                .add("thirdName='" + thirdName + "'")
+        return new StringJoiner("| ",  "[", "]\n")
+                .add("Id=" + id)
+                .add(  firstName+" "+secondName+" "+thirdName )
                 .add("email='" + email + "'")
                 .add("username='" + username + "'")
                 .add("gender=" + gender)
@@ -61,6 +59,7 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
                 .add("status=" + status)
                 .toString();
     }
+
 
     public User(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender) {
         this.firstName = firstName;

@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, String>> implements UserService<V> {
+public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, String>> implements UserService<V> {
     private final UserRepository<V> userRepository;
     private final ValidUser<V> userValidator;
 
@@ -162,49 +162,12 @@ public abstract class UserServiceImpl<V extends UserIdentifiable & Identifiable<
 
         return log;}
 
-
-    public static void main(String[] args) {
-        DaoFactory daoFactory=new DaoFactoryImpl();
-        UserRepository<Teacher> userRepository=daoFactory.createTeacherRepository();
-        TeacherRepository teacherRepository=daoFactory.createTeacherRepository();
-        ParentRepository parentRepository=daoFactory.createParentRepository();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        TeacherService teacherService=new TeacherServiceImpl(teacherRepository,new ValidUser<>(teacherRepository));
-        teacherService.register(new Teacher("Anika","Petrova","Kartselska","aa@abv.bg","anika","Anikaaa444$", Gender.FEMALE,"0894673436","rupite", LocalDate.parse("09.12.2001",dtf)));
-        teacherService.register(new Teacher("Anika","Petrova","Kartselska","axa@abv.bg","janika","Anikaaa444$", Gender.FEMALE,"0894663436","rupite", LocalDate.parse("09.12.2001",dtf)));
-        try {
-            System.out.println(teacherService.getUserById(2L));
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            teacherService.changeOwnFirstName(teacherService.getUserById(2L),"Raya");
-            teacherService.changeOwnPassword(teacherService.getUserById(2L),"Anikaaa445$");
-            teacherService.changeOwnGender(teacherService.getUserById(2L),Gender.MALE);
-        } catch (EntityNotFoundException | InvalidEntityDataException e) {
-            e.printStackTrace();
-        }
-        try {
-            System.out.println(teacherService.getUserById(2L));
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            teacherService.logIn("aa@abv.bg","anika","kk");
-        } catch (InvalidEntityDataException e) {
-            e.printStackTrace();
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-  /*      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
-        try {
-            vu.validate(new Parent("Anika","Petrova","Kartselska","aa@abv.bg","anika","Anikaaa444$", Gender.FEMALE,"0894673436","rupite", LocalDate.parse("09.12.2001",dtf),new HashMap<>(),-34));
-        } catch (InvalidEntityDataException e) {
-            e.printStackTrace();
-        }*/
-
+    @Override
+    public void showUserInfo(String email, String username, String password) throws InvalidEntityDataException, EntityNotFoundException {
+       V loggedInUser =logIn(email,username,password);
+        System.out.println(loggedInUser);
     }
+
+
+
 }

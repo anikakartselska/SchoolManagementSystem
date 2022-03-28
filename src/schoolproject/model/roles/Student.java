@@ -12,8 +12,9 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.StringJoiner;
+import java.util.function.Function;
 
-public class Student extends User implements IdentifiableAGR<Long, String>, UserIdentifiable {
+public class Student extends User implements IdentifiableAGR<Long, String>, UserIdentifiable{
     private int numberInClass;
     private HashMap<Long, Parent>parents=new HashMap<>();
     private SchoolClass schoolClass;

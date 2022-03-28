@@ -7,6 +7,9 @@ import schoolproject.model.StudentFeedback;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Parent;
 import schoolproject.model.roles.Student;
+import schoolproject.model.roles.User;
+
+import java.util.*;
 
 public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implements StudentRepository {
 
@@ -204,5 +207,12 @@ public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implement
         }
 
         return update(student);
+    }
+
+    @Override
+    public List<Student> findAllSorted(Comparator<Student> comparator) { // O(1)
+        var sorted = new ArrayList<>(findAll());
+        sorted.sort(comparator);
+        return sorted;
     }
 }

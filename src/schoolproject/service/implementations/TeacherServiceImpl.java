@@ -1,5 +1,7 @@
 package schoolproject.service.implementations;
 
+import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.rolerepositories.TeacherRepository;
 import schoolproject.model.roles.Teacher;
 import schoolproject.service.TeacherService;
@@ -12,8 +14,5 @@ public class TeacherServiceImpl extends UserServiceImpl<Teacher> implements Teac
     }
 
 
-    @Override
-    public void showUserInfo(String email, String username, String password) {
 
-    }
 }

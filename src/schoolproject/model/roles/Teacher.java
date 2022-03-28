@@ -9,7 +9,9 @@ import schoolproject.model.enums.Role;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class Teacher extends User implements UserIdentifiable {
 
@@ -19,13 +21,18 @@ public class Teacher extends User implements UserIdentifiable {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Teacher.class.getSimpleName() + super.toString(),"")
+        return new StringJoiner("| ", Teacher.class.getSimpleName() + super.toString(),"")
                 .add("teachingClasses=" + teachingClasses)
                 .add("ownClass=" + ownClass)
-                .add("program=" + program)
+                .add("program:\n" + mapToString(program))
                 .toString();
     }
-
+    public static <K, V> String mapToString(Map<K, V> map) {
+        return map.entrySet()
+                .stream()
+                .map(entry -> entry.getKey() + ":" + entry.getValue())
+                .collect(Collectors.joining("\n ", "{", "}"));
+    }
     public HashMap<Long, SchoolClass> getTeachingClasses() {
         return teachingClasses;
     }
@@ -96,10 +103,12 @@ public Teacher()
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender) {
         super(firstName, secondName, thirdName, email, username, password, gender);
         this.setRole(Role.TEACHER);
+        setProgram();
     }
 
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday) {
         super(firstName, secondName, thirdName, email, username, password, gender,phoneNumber, address, birthday);
         this.setRole(Role.TEACHER);
+        setProgram();
     }
 }
