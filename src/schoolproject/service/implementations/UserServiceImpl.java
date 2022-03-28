@@ -1,4 +1,4 @@
-package schoolproject.service;
+package schoolproject.service.implementations;
 
 import schoolproject.dao.DaoFactory;
 import schoolproject.dao.exceptions.EntityNotFoundException;
@@ -6,32 +6,32 @@ import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.dao.impl.DaoFactoryImpl;
-import schoolproject.dao.impl.rolesrepoimpl.UserRepositoryImpl;
 import schoolproject.dao.rolerepositories.ParentRepository;
 import schoolproject.dao.rolerepositories.TeacherRepository;
 import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.model.enums.Gender;
-import schoolproject.model.roles.Parent;
 import schoolproject.model.roles.Teacher;
-import schoolproject.util.ValidParent;
+import schoolproject.service.TeacherService;
+import schoolproject.service.UserService;
+import schoolproject.service.implementations.TeacherServiceImpl;
 import schoolproject.util.ValidUser;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, String>> implements UserService<V>{
+public abstract class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, String>> implements UserService<V> {
+    private final UserRepository<V> userRepository;
+    private final ValidUser<V> userValidator;
 
     public UserServiceImpl(UserRepository<V> userRepository, ValidUser<V> userValidator) {
         this.userRepository = userRepository;
         this.userValidator = userValidator;
     }
 
-    private final UserRepository<V> userRepository;
-    private final ValidUser <V>userValidator;
+
 
 
     @Override
