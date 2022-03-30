@@ -23,7 +23,7 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
     private String phoneNumber;
     private String address;
     private LocalDate birthday;
-
+    private Status status=Status.PENDING;
     public Role getRole() {
         return role;
     }
@@ -44,7 +44,7 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
         this.status = status;
     }
 
-    private Status status=Status.PENDING;
+
     @Override
     public String toString() {
         return new StringJoiner("| ",  "[", "]\n")

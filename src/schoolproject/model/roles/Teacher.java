@@ -14,14 +14,17 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class Teacher extends User implements UserIdentifiable {
-
     private HashMap<Long, SchoolClass>teachingClasses=new HashMap<>();
    private SchoolClass ownClass;
-    private HashMap<Integer,HashMap<Integer,Subject>>program=new HashMap<Integer,HashMap<Integer, Subject>>();
+    private HashMap<Integer,HashMap<Integer,Subject>>program=setProgram(new HashMap<>());
 
     @Override
     public String toString() {
         return new StringJoiner("| ", Teacher.class.getSimpleName() + super.toString(),"")
+                .toString();
+    }
+    public String additionalInfo(){
+        return new StringJoiner("| ", Teacher.class.getSimpleName(),"")
                 .add("teachingClasses=" + teachingClasses)
                 .add("ownClass=" + ownClass)
                 .add("program:\n" + mapToString(program))
@@ -53,18 +56,19 @@ public class Teacher extends User implements UserIdentifiable {
         return program;
     }
 
-    public void setProgram() {
+    public static HashMap<Integer,HashMap<Integer,Subject>> setProgram(HashMap<Integer,HashMap<Integer,Subject>> program) {
 
-        this.program.put(1,new HashMap<>());
-        this.program.put(2,new HashMap<>());
-        this.program.put(3,new HashMap<>());
-        this.program.put(4,new HashMap<>());
-        this.program.put(5,new HashMap<>());
+        program.put(1,new HashMap<>());
+        program.put(2,new HashMap<>());
+        program.put(3,new HashMap<>());
+        program.put(4,new HashMap<>());
+        program.put(5,new HashMap<>());
+        return program;
     }
 
 public Teacher()
 {
-    setProgram();
+
 }
 
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
@@ -72,20 +76,19 @@ public Teacher()
         this.teachingClasses = teachingClasses;
         this.ownClass = ownClass;
         this.setRole(Role.TEACHER);
-        setProgram();
+
     }
 
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses) {
         super(firstName, secondName, thirdName, email, username, password, gender);
         this.teachingClasses = teachingClasses;
         this.setRole(Role.TEACHER);
-        setProgram();
+
     }
 
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, HashMap<Long, SchoolClass> teachingClasses) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.teachingClasses = teachingClasses;
-        setProgram();
         this.setRole(Role.TEACHER);
     }
 
@@ -93,7 +96,6 @@ public Teacher()
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.teachingClasses = teachingClasses;
         this.ownClass = ownClass;
-        setProgram();
         this.setRole(Role.TEACHER);
 
 
@@ -103,12 +105,12 @@ public Teacher()
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender) {
         super(firstName, secondName, thirdName, email, username, password, gender);
         this.setRole(Role.TEACHER);
-        setProgram();
+
     }
 
     public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday) {
         super(firstName, secondName, thirdName, email, username, password, gender,phoneNumber, address, birthday);
         this.setRole(Role.TEACHER);
-        setProgram();
+
     }
 }

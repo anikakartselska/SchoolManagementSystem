@@ -18,10 +18,16 @@ import schoolproject.util.ValidStudent;
 import schoolproject.util.ValidUser;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Main {
+
+
     public static void main(String[] args) {
+
+
         DaoFactory daoFactory=new DaoFactoryImpl();
         UserRepository<Teacher> userRepository=daoFactory.createTeacherRepository();
         TeacherRepository teacherRepository=daoFactory.createTeacherRepository();
@@ -32,23 +38,7 @@ public class Main {
         StudentService studentService=new StudentServiceImpl(studentRepository,new ValidStudent(studentRepository));
         teacherService.register(new Teacher("Anika","Petrova","Kartselska","aa@abv.bg","anika","Anikaaa444$", Gender.FEMALE,"0894673436","rupite", LocalDate.parse("09.12.2001",dtf)));
         teacherService.register(new Teacher("Anika","Petrova","Kartselska","axa@abv.bg","janika","Anikaaa444$", Gender.FEMALE,"0894663436","rupite", LocalDate.parse("09.12.2001",dtf)));
-        try {
-            System.out.println(teacherService.getUserById(2L));
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            teacherService.changeOwnFirstName(teacherService.getUserById(2L),"Raya");
-            teacherService.changeOwnPassword(teacherService.getUserById(2L),"Anikaaa445$");
-            teacherService.changeOwnGender(teacherService.getUserById(2L),Gender.MALE);
-        } catch (EntityNotFoundException | InvalidEntityDataException e) {
-            e.printStackTrace();
-        }
-        try {
-            System.out.println(teacherService.getUserById(2L));
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
+
 
 
         try {

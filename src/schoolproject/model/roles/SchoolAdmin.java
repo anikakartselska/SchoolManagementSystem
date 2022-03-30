@@ -25,4 +25,5 @@ public class SchoolAdmin extends User implements UserIdentifiable {
         return new StringJoiner(", ", SchoolAdmin.class.getSimpleName() + super.toString(),"")
                 .toString();
     }
+
 }

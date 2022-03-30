@@ -25,10 +25,9 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
     private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
     public Student() {
     }
+    public String additionalInfo(){
 
-    @Override
-    public String toString() {
-        return new StringJoiner(",", Student.class.getSimpleName() + super.toString(),"")
+        return new StringJoiner("|", Student.class.getSimpleName() ,"")
                 .add("numberInClass=" + numberInClass)
                 .add("parents=" + parents)
                 .add("schoolClass=" + schoolClass)
@@ -38,6 +37,11 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
                 .add("remarks=" + remarks)
                 .add("grades=" + grades)
                 .toString();
+    }
+    @Override
+    public String toString() {
+
+        return new StringJoiner("", Student.class.getSimpleName() + super.toString(),"").toString();
     }
 
     public int getNumberInClass() {

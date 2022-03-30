@@ -48,10 +48,14 @@ public class Parent extends User implements UserIdentifiable {
         this.children = children;
         this.setRole(Role.PARENT);
     }
-
     @Override
-    public String toString() {
-        return new StringJoiner("\n ", Parent.class.getSimpleName() + super.toString(),"")
+    public String toString()
+    {
+        return new StringJoiner("", Parent.class.getSimpleName() + super.toString(),"").toString();
+    }
+
+    public String additionalInfo() {
+        return new StringJoiner("\n ", Parent.class.getSimpleName() ,"")
                 .add("children=" + children)
                 .add("monthIncome=" + monthIncome)
                 .toString();

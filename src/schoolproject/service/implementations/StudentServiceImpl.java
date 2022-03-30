@@ -11,8 +11,5 @@ public class StudentServiceImpl extends UserServiceImpl<Student>implements Stude
         super(studentRepository, validStudent);
     }
 
-    @Override
-    public void showUserInfo(String email, String username, String password) {
 
-    }
 }
