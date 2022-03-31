@@ -9,9 +9,7 @@ import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;
 
 public interface SchoolClassRepo extends Repository <Long,String, SchoolClass>{
-    SchoolClass addLesson(SchoolClass schoolClass, Lesson lesson) throws EntityNotFoundException;
-    SchoolClass updateLesson(SchoolClass schoolClass, Lesson lesson) throws EntityNotFoundException;
-    SchoolClass deleteLesson(SchoolClass schoolClass, Lesson lesson) throws EntityNotFoundException;
+
     SchoolClass addStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException;
     SchoolClass updateStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException;
     SchoolClass deleteStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException;

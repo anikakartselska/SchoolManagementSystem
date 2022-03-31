@@ -11,8 +11,5 @@ public class ParentServiceImpl extends UserServiceImpl<Parent> implements Parent
         super(parentRepository, parentValidator);
     }
 
-    @Override
-    public void showUserInfo(String email, String username, String password) {
 
-    }
 }

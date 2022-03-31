@@ -1,8 +1,12 @@
 package schoolproject.dao.impl;
 
+import schoolproject.dao.AGRHelper;
 import schoolproject.dao.LessonRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.impl.helperrepositories.AGFHelperImpl;
+import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
+import schoolproject.model.Grade;
 import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
@@ -10,7 +14,7 @@ import schoolproject.model.Subject;
 import java.time.LocalDate;
 
 
-public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> implements LessonRepository {
+public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> implements LessonRepository{
     @Override
     public Lesson changeSubject(Lesson lesson, Subject newSubject) throws EntityNotFoundException {
         lesson.setSubject(newSubject);
@@ -30,6 +34,7 @@ public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> impl
         lesson.setSchoolClass(newSchoolClass);
         return update(lesson);
     }
+
 
 
 }

@@ -2,6 +2,7 @@ package schoolproject.dao.identifiiables;
 
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.enums.Gender;
+import schoolproject.model.enums.Status;
 import schoolproject.model.roles.User;
 
 import java.time.Instant;
@@ -33,4 +34,6 @@ public interface UserIdentifiable{
     void setAddress(String newAddress);
 
     LocalDate getBirthday();
+
+    void setStatus(Status status);
 }

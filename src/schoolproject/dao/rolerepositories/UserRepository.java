@@ -5,6 +5,7 @@ import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.model.enums.Gender;
+import schoolproject.model.enums.Status;
 
 public interface UserRepository<V extends UserIdentifiable & Identifiable<Long, String>> extends Repository<Long,String,V> {
     V changeFirstName(V user,String newFirstName) throws EntityNotFoundException;
@@ -17,4 +18,5 @@ public interface UserRepository<V extends UserIdentifiable & Identifiable<Long, 
     V findByEmail(String email);
     V findByUsername(String userName);
     V findByPhoneNumber(String phoneNumber);
+    V changeStatus(V user, Status status) throws EntityNotFoundException;
 }

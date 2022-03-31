@@ -1,29 +1,30 @@
 package schoolproject.model;
 
 import schoolproject.dao.identifiiables.Identifiable;
+import schoolproject.dao.identifiiables.IdentifiableAGR;
 import schoolproject.model.roles.Student;
 import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
 
-public class SchoolClass implements Identifiable<Long, String> {
+public class SchoolClass implements Identifiable<Long, String>{
     private Long id;
     private Teacher mainTeacher;
     private HashMap<Long,Subject>subjects=new HashMap<>();
     private HashMap<Long, Student>students=new HashMap<>();
-    private HashMap<Long,Lesson> lessons=new HashMap<>();
     private HashMap<Integer,HashMap<Integer,Subject>>program=Teacher.setProgram(new HashMap<>());
 
     public SchoolClass(Teacher mainTeacher) {
         this.mainTeacher = mainTeacher;
     }
+    public SchoolClass()
+     {}
 
-    public SchoolClass(Long id, Teacher mainTeacher, HashMap<Long, Subject> subjects, HashMap<Long, Student> students, HashMap<Long, Lesson> lessons, HashMap<Integer, HashMap<Integer, Subject>> program) {
+    public SchoolClass(Long id, Teacher mainTeacher, HashMap<Long, Subject> subjects, HashMap<Long, Student> students, HashMap<Integer, HashMap<Integer, Subject>> program) {
         this.id = id;
         this.mainTeacher = mainTeacher;
         this.subjects = subjects;
         this.students = students;
-        this.lessons = lessons;
         this.program = program;
     }
 
@@ -65,13 +66,6 @@ public class SchoolClass implements Identifiable<Long, String> {
         this.students = students;
     }
 
-    public HashMap<Long, Lesson> getLessons() {
-        return lessons;
-    }
-
-    public void setLessons(HashMap<Long, Lesson> lessons) {
-        this.lessons = lessons;
-    }
 
     public HashMap<Integer, HashMap<Integer, Subject>> getProgram() {
         return program;

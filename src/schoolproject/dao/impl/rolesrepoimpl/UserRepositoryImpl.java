@@ -6,6 +6,7 @@ import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.enums.Gender;
+import schoolproject.model.enums.Status;
 
 public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, String>> extends RepositoryImpl<Long,String, V> implements UserRepository<V> {
 
@@ -83,5 +84,11 @@ public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, 
                 return user;
 
         return null;
+    }
+
+    @Override
+    public V changeStatus(V user, Status status) throws EntityNotFoundException {
+        user.setStatus(status);
+        return update(user);
     }
 }

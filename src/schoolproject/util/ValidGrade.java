@@ -3,6 +3,7 @@ package schoolproject.util;
 import schoolproject.dao.GradeRepository;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.impl.GradeRepositoryImpl;
+import schoolproject.model.Grade;
 import schoolproject.model.StudentFeedback;
 
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ public class ValidGrade {
     public ValidGrade(GradeRepository gradeRepository) {
         this.gradeRepository = gradeRepository;
     }
-public void validate(StudentFeedback.Grade grade) throws InvalidEntityDataException {
+public void validate(Grade grade) throws InvalidEntityDataException {
     if(grade.getDate().isAfter(LocalDate.now()))
     {
         throw  new InvalidEntityDataException(grade.getClass().getName()+ " date "+ grade.getDate()+

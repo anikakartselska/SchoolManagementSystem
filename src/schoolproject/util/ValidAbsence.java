@@ -3,6 +3,7 @@ package schoolproject.util;
 import schoolproject.dao.AbsenceRepository;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.impl.AbsenceRepositoryImpl;
+import schoolproject.model.Absence;
 import schoolproject.model.StudentFeedback;
 
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ public class ValidAbsence {
     public ValidAbsence(AbsenceRepository absenceRepository) {
         this.absenceRepository = absenceRepository;
     }
-    public void validate(StudentFeedback.Absence absence) throws InvalidEntityDataException {
+    public void validate(Absence absence) throws InvalidEntityDataException {
         if(absence.getDate().isAfter(LocalDate.now()))
         {
             throw  new InvalidEntityDataException(absence.getClass().getName()+ " date "+ absence.getDate()+

@@ -1,5 +1,6 @@
 package schoolproject.model.roles;
 
+import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.IdentifiableAGR;
 import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.model.SchoolClass;
@@ -14,15 +15,13 @@ import java.util.HashMap;
 import java.util.StringJoiner;
 import java.util.function.Function;
 
-public class Student extends User implements IdentifiableAGR<Long, String>, UserIdentifiable{
+public class Student extends User implements Identifiable<Long,String>,UserIdentifiable{
     private int numberInClass;
     private HashMap<Long, Parent>parents=new HashMap<>();
     private SchoolClass schoolClass;
     private double averageGrade;
     private HashMap<Long, Subject>subjects=new HashMap<>();
-    private HashMap<Long, StudentFeedback.Absence> absences=new HashMap<>();
-    private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
-    private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
+
     public Student() {
     }
     public String additionalInfo(){
@@ -33,9 +32,6 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
                 .add("schoolClass=" + schoolClass)
                 .add("averageGrade=" + averageGrade)
                 .add("subjects=" + subjects)
-                .add("absences=" + absences)
-                .add("remarks=" + remarks)
-                .add("grades=" + grades)
                 .toString();
     }
     @Override
@@ -85,29 +81,6 @@ public class Student extends User implements IdentifiableAGR<Long, String>, User
         this.schoolClass = schoolClass;
     }
 
-    public HashMap<Long, StudentFeedback.Absence> getAbsences() {
-        return absences;
-    }
-
-    public void setAbsences(HashMap<Long, StudentFeedback.Absence> absences) {
-        this.absences = absences;
-    }
-
-    public HashMap<Long, StudentFeedback.Remark> getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(HashMap<Long, StudentFeedback.Remark> remarks) {
-        this.remarks = remarks;
-    }
-
-    public HashMap<Long, StudentFeedback.Grade> getGrades() {
-        return grades;
-    }
-
-    public void setGrades(HashMap<Long, StudentFeedback.Grade> grades) {
-        this.grades = grades;
-    }
 
     public double getAverageGrade() {
         return averageGrade;

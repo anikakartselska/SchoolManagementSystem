@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class Teacher extends User implements UserIdentifiable {
     private HashMap<Long, SchoolClass>teachingClasses=new HashMap<>();
    private SchoolClass ownClass;
-    private HashMap<Integer,HashMap<Integer,Subject>>program=setProgram(new HashMap<>());
+    private final HashMap<Integer,HashMap<Integer,Subject>>program=setProgram(new HashMap<>());
 
     @Override
     public String toString() {

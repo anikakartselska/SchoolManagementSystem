@@ -4,6 +4,7 @@ package schoolproject.dao.impl;
 import schoolproject.dao.SchoolClassRepo;
 import schoolproject.dao.exceptions.BusyClassException;
 import schoolproject.dao.exceptions.EntityNotFoundException;
+import schoolproject.dao.impl.helperrepositories.AGFHelperImpl;
 import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
@@ -13,38 +14,7 @@ import schoolproject.model.roles.Student;
 
 import java.util.HashMap;
 
-public class SchoolClassRepoImpl extends RepositoryImpl<Long,String, SchoolClass> implements SchoolClassRepo {
-    @Override
-    public SchoolClass addLesson(SchoolClass schoolClass, Lesson lesson) throws EntityNotFoundException {
-
-        schoolClass.getLessons().put(lesson.getId(),lesson);
-        return update(schoolClass);
-    }
-
-    @Override
-    public SchoolClass updateLesson(SchoolClass schoolClass, Lesson lesson) throws EntityNotFoundException {
-
-
-        if(schoolClass.getLessons().get(lesson.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            schoolClass.getLessons().put(lesson.getId(),lesson);
-        }
-
-        return update(schoolClass);
-    }
-
-    @Override
-    public SchoolClass deleteLesson(SchoolClass schoolClass, Lesson lesson) throws EntityNotFoundException {
-
-        if(schoolClass.getLessons().get(lesson.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            schoolClass.getLessons().remove(lesson.getId());
-        }
-
-        return update(schoolClass);
-    }
+public class SchoolClassRepoImpl extends RepositoryImpl<Long,String,SchoolClass> implements SchoolClassRepo {
 
     @Override
     public SchoolClass addStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException {

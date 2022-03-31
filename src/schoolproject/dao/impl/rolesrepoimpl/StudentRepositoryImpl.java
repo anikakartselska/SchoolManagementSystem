@@ -15,108 +15,6 @@ public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implement
 
 
     @Override
-    public Student addAbsence(Student student, StudentFeedback.Absence newAbsence) throws EntityNotFoundException {
-
-        student.getAbsences().put(newAbsence.getId(),newAbsence);
-        return update(student);
-
-    }
-
-    @Override
-    public Student addRemark(Student student, StudentFeedback.Remark newRemark) throws EntityNotFoundException {
-
-
-        student.getRemarks().put(newRemark.getId(),newRemark);
-        return update(student);
-    }
-
-    @Override
-    public Student addGrade(Student student, StudentFeedback.Grade newGrade) throws EntityNotFoundException {
-
-        student.getGrades().put(newGrade.getId(),newGrade);
-
-        return update(student);
-    }
-
-    @Override
-    public Student removeAbsence(Student student, StudentFeedback.Absence removeAbsence) throws EntityNotFoundException {
-
-
-        if(student.getAbsences().get(removeAbsence.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getAbsences().remove(removeAbsence.getId());
-        }
-
-        return update(student);
-    }
-
-    @Override
-    public Student removeRemark(Student student, StudentFeedback.Remark removeRemark) throws EntityNotFoundException {
-
-
-        if(student.getRemarks().get(removeRemark.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getRemarks().remove(removeRemark.getId());
-        }
-
-        return update(student);
-
-    }
-
-    @Override
-    public Student removeGrade(Student student, StudentFeedback.Grade removeGrade) throws EntityNotFoundException {
-
-
-        if(student.getGrades().get(removeGrade.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getGrades().remove(removeGrade.getId());
-        }
-
-        return update(student);
-    }
-
-    @Override
-    public Student updateAbsence(Student student, StudentFeedback.Absence newAbsence) throws EntityNotFoundException {
-
-        if(student.getAbsences().get(newAbsence.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getAbsences().put(newAbsence.getId(),newAbsence);
-        }
-
-        return update(student);
-    }
-
-    @Override
-    public Student updateRemark(Student student, StudentFeedback.Remark newRemark) throws EntityNotFoundException {
-
-
-        if(student.getRemarks().get(newRemark.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getRemarks().put(newRemark.getId(),newRemark);
-        }
-
-        return update(student);
-    }
-
-    @Override
-    public Student updateGrade(Student student, StudentFeedback.Grade newGrade) throws EntityNotFoundException {
-
-
-        if(student.getGrades().get(newGrade.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getGrades().put(newGrade.getId(),newGrade);
-        }
-
-        return update(student);
-    }
-
-    @Override
     public Student changeNumberInClass(Student student, int newNumber) throws EntityNotFoundException {
 
         student.setNumberInClass(newNumber);
@@ -132,16 +30,11 @@ public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implement
 
     @Override
     public Student changeAverageGrade(Student student) throws EntityNotFoundException {
-
-        double average=0;
-        var i=0;
-        for(StudentFeedback.Grade grade: student.getGrades().values())
-        { average+= grade.getValue();
-        i++;}
-
-        student.setAverageGrade(average/i);
-        return update(student);
+        student.setAverageGrade(
+                student.getSubjects().values().stream().map(Subject::getAverageGrade).mapToDouble(Double::doubleValue).sum()/student.getSubjects().size());
+          return update(student);
     }
+
 
     @Override
     public Student addParent(Student student, Parent parent) throws EntityNotFoundException {

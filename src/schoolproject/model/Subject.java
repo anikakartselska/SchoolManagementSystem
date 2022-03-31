@@ -1,22 +1,34 @@
 package schoolproject.model;
 
+import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.IdentifiableAGR;
+import schoolproject.model.roles.Student;
 import schoolproject.model.roles.Teacher;
 
 import java.util.HashMap;
 import java.util.StringJoiner;
 
-public class Subject implements IdentifiableAGR<Long, String> {
+public class Subject implements Identifiable<Long, String>, IdentifiableAGR<Long, String> {
     private Long id;
     private String subName;
     private Teacher teacher;
     private double averageGrade;
     private SchoolClass schoolClass;
     private int weeklyLessons;
-    private HashMap<Long,StudentFeedback.Absence> absences=new HashMap<>();
-    private HashMap<Long,StudentFeedback.Remark>remarks= new HashMap<>();
-    private HashMap<Long,StudentFeedback.Grade>grades=new HashMap<>();
-    private HashMap<Long,Lesson>lessons;
+    private HashMap<Student,StudentFeedback> feedbacks=new HashMap<>();
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Subject.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("subName='" + subName + "'")
+                .add("teacher=" + teacher)
+                .add("averageGrade=" + averageGrade)
+                .add("schoolClass=" + schoolClass)
+                .add("weeklyLessons=" + weeklyLessons)
+                .add("feedbacks=" + feedbacks)
+                .toString();
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -33,20 +45,12 @@ public class Subject implements IdentifiableAGR<Long, String> {
         return getId().hashCode();
     }
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", Subject.class.getSimpleName() + "[", "]")
-                .add("id=" + id)
-                .add("subName='" + subName + "'")
-                .add("teacher=" + teacher)
-                .add("averageGrade=" + averageGrade)
-                .add("schoolClass=" + schoolClass)
-                .add("weeklyLessons=" + weeklyLessons)
-                .add("absences=" + absences)
-                .add("remarks=" + remarks)
-                .add("grades=" + grades)
-                .add("lessons=" + lessons)
-                .toString();
+    public HashMap<Student, StudentFeedback> getFeedback() {
+        return feedbacks;
+    }
+
+    public void setFeedback(HashMap<Student, StudentFeedback> feedbacks) {
+        this.feedbacks = feedbacks;
     }
 
     public int getWeeklyLessons() {
@@ -65,21 +69,6 @@ public class Subject implements IdentifiableAGR<Long, String> {
         this.schoolClass = schoolClass;
     }
 
-
-
-    //array of lessons
-  public Subject() {
-   }
-    public Subject(String name, Teacher teacher,SchoolClass schoolClass,int weeklyLessons, double averageGrade, HashMap<Long, StudentFeedback.Absence> absences, HashMap<Long, StudentFeedback.Remark> remarks, HashMap<Long, StudentFeedback.Grade> grades) {
-        this.subName = name;
-        this.teacher = teacher;
-        this.averageGrade = averageGrade;
-        this.absences = absences;
-        this.remarks = remarks;
-        this.grades = grades;
-        this.schoolClass=schoolClass;
-        this.weeklyLessons=weeklyLessons;
-    }
 
     public Long getId() {
         return id;
@@ -102,13 +91,6 @@ public class Subject implements IdentifiableAGR<Long, String> {
         this.subName = subName;
     }
 
-    public HashMap<Long, Lesson> getLessons() {
-        return lessons;
-    }
-
-    public void setLessons(HashMap<Long, Lesson> lessons) {
-        this.lessons = lessons;
-    }
 
     public Teacher getTeacher() {
         return teacher;
@@ -126,32 +108,48 @@ public class Subject implements IdentifiableAGR<Long, String> {
         this.averageGrade = averageGrade;
     }
 
-    public HashMap<Long, StudentFeedback.Absence> getAbsences() {
-        return absences;
+    public Subject(Long id, String subName, Teacher teacher, SchoolClass schoolClass, int weeklyLessons) {
+        this.id = id;
+        this.subName = subName;
+        this.teacher = teacher;
+        this.schoolClass = schoolClass;
+        this.weeklyLessons = weeklyLessons;
     }
 
-    public void setAbsences(HashMap<Long, StudentFeedback.Absence> absences) {
-        this.absences = absences;
+    public Subject(Long id, String subName, Teacher teacher, double averageGrade, SchoolClass schoolClass, int weeklyLessons, HashMap<Student, StudentFeedback> feedback) {
+        this.id = id;
+        this.subName = subName;
+        this.teacher = teacher;
+        this.averageGrade = averageGrade;
+        this.schoolClass = schoolClass;
+        this.weeklyLessons = weeklyLessons;
+        this.feedbacks = feedback;
     }
 
-    public HashMap<Long, StudentFeedback.Remark> getRemarks() {
-        return remarks;
+    public Subject(Long id, String subName, Teacher teacher, SchoolClass schoolClass, int weeklyLessons, HashMap<Student, StudentFeedback> feedback) {
+        this.id = id;
+        this.subName = subName;
+        this.teacher = teacher;
+        this.schoolClass = schoolClass;
+        this.weeklyLessons = weeklyLessons;
+        this.feedbacks = feedback;
     }
+    public Subject() {
 
-    public void setRemarks(HashMap<Long, StudentFeedback.Remark> remarks) {
-        this.remarks = remarks;
-    }
-
-    public HashMap<Long, StudentFeedback.Grade> getGrades() {
-        return grades;
-    }
-
-    public void setGrades(HashMap<Long, StudentFeedback.Grade> grades) {
-        this.grades = grades;
     }
 
     public Subject(String name, Teacher teacher) {
         this.subName = name;
         this.teacher = teacher;
+    }
+
+    @Override
+    public HashMap<Student, StudentFeedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    @Override
+    public void setFeedbacks(HashMap<Student, StudentFeedback> feedbacks) {
+        this.feedbacks = feedbacks;
     }
 }

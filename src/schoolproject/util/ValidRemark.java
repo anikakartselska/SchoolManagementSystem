@@ -3,6 +3,7 @@ package schoolproject.util;
 import schoolproject.dao.AbsenceRepository;
 import schoolproject.dao.RemarkRepository;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
+import schoolproject.model.Remark;
 import schoolproject.model.StudentFeedback;
 
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ public class ValidRemark {
         this.remarkRepository = remarkRepository;
     }
 
-    public void validate(StudentFeedback.Remark remark) throws InvalidEntityDataException {
+    public void validate(Remark remark) throws InvalidEntityDataException {
         if(remark.getDate().isAfter(LocalDate.now()))
         {
             throw  new InvalidEntityDataException(remark.getClass().getName()+ " date "+ remark.getDate()+
