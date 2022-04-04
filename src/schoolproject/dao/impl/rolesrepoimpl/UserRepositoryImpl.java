@@ -1,13 +1,11 @@
 package schoolproject.dao.impl.rolesrepoimpl;
 
-import schoolproject.dao.LongIdGenerator;
-import schoolproject.dao.PersistableRepository;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.dao.impl.helperrepositories.PersistableRepositoryFileImpl;
 import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
-import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Status;
 

@@ -2,8 +2,6 @@ package schoolproject.dao.impl.helperrepositories;
 
 
 
-import schoolproject.dao.IdGenerator;
-import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.Repository;
 import schoolproject.dao.exceptions.EntityNotFoundException;

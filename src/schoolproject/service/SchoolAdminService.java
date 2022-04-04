@@ -1,38 +1,29 @@
 package schoolproject.service;
-
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
-import schoolproject.model.SchoolClass;
-import schoolproject.model.Subject;
+import schoolproject.dao.identifiiables.Identifiable;
+import schoolproject.dao.identifiiables.UserIdentifiable;
+import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.model.enums.Gender;
-import schoolproject.model.roles.Parent;
 import schoolproject.model.roles.SchoolAdmin;
-import schoolproject.model.roles.Student;
-import schoolproject.model.roles.User;
-
+import schoolproject.util.ValidUser;
 import java.util.Collection;
-import java.util.HashMap;
 
-public interface SchoolAdminService<V> extends UserService<SchoolAdmin>{
 
-    V approveRegisterRequest(V user) throws EntityNotFoundException;
-    V changeGender(V user, Gender newGender) throws EntityNotFoundException;
-    V changePhoneNumber(V user,String newPhoneNumber) throws InvalidEntityDataException, EntityNotFoundException;
-    V changeAddress(V user,String newAddress) throws EntityNotFoundException;
-     V updateUser(V user) throws EntityNotFoundException, InvalidEntityDataException;
-     V deleteAccount(V user) throws EntityNotFoundException;
-     V changeFirstName(V user,String newFirstName) throws EntityNotFoundException, InvalidEntityDataException;
-     V changeSecondName(V user,String newSecondName) throws InvalidEntityDataException, EntityNotFoundException;
-     V changeThirdName(V user,String newThirdName) throws InvalidEntityDataException, EntityNotFoundException;
-     Collection<V> getAllUsersFromThisRole();
-     SchoolClass addNewClass(SchoolClass schoolClass) throws EntityNotFoundException;
-     Subject addNewSubject(Subject subject) throws EntityNotFoundException;
-    SchoolClass updateClass(SchoolClass schoolClass) throws EntityNotFoundException;
-    Subject updateSubject(Subject subject) throws EntityNotFoundException;
-    SchoolClass deleteClass(SchoolClass schoolClass) throws EntityNotFoundException;
-    Subject deleteSubject(Subject subject) throws EntityNotFoundException;
-    Student addParent(Student student,Parent parent);
-    Student removeParent(Student student,Parent parent);
+public interface SchoolAdminService<V extends UserIdentifiable & Identifiable<Long, String>> extends UserService<SchoolAdmin>{
+
+//USER MANAGE
+    V changeGender(V user, UserRepository<V> userRepo, Gender newGender) throws EntityNotFoundException;
+    V changePhoneNumber(V user, UserRepository<V> userRepo,String newPhoneNumber) throws InvalidEntityDataException, EntityNotFoundException;
+    V changeAddress(V user, UserRepository<V> userRepo,String newAddress) throws EntityNotFoundException;
+     V updateUser(V user, UserRepository<V> userRepo, ValidUser<V>validation) throws EntityNotFoundException, InvalidEntityDataException;
+     V deleteAccount(V user, UserRepository<V> userRepo) throws EntityNotFoundException;
+     V changeFirstName(V user, UserRepository<V> userRepo,String newFirstName) throws EntityNotFoundException, InvalidEntityDataException;
+     V changeSecondName(V user, UserRepository<V> userRepo,String newSecondName) throws InvalidEntityDataException, EntityNotFoundException;
+     V changeThirdName(V user, UserRepository<V> userRepo,String newThirdName) throws InvalidEntityDataException, EntityNotFoundException;
+     V approveRegisterRequest(V user, UserRepository<V> userRepo) throws EntityNotFoundException;
+     Collection<V> getAllUsersFromThisRole( UserRepository<V> userRepo);
+
 
 
 }

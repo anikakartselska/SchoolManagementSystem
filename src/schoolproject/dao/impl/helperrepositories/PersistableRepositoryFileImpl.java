@@ -1,6 +1,4 @@
 package schoolproject.dao.impl.helperrepositories;
-import schoolproject.dao.IdGenerator;
-import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.PersistableRepository;
 import schoolproject.dao.identifiiables.Identifiable;
 
@@ -9,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class PersistableRepositoryFileImpl<K,S, V extends Identifiable<K,S>> extends RepositoryImpl<K,S,V> implements PersistableRepository<K,S,V> {
-    private String dbFileName;
+    private final String dbFileName;
 
     public PersistableRepositoryFileImpl(LongIdGenerator idGenerator, String dbFileName) {
         super(idGenerator);
@@ -24,11 +22,7 @@ public class PersistableRepositoryFileImpl<K,S, V extends Identifiable<K,S>> ext
             clear();
             getIdGenerator().reset((Long) in.readObject());
             addAll((Collection<V>)in.readObject());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -38,13 +32,12 @@ public class PersistableRepositoryFileImpl<K,S, V extends Identifiable<K,S>> ext
         try (var out = new ObjectOutputStream(
                 new BufferedOutputStream(
                         new FileOutputStream(dbFileName)))) {
+            System.out.println(getIdGenerator().getCurrentId());
             out.writeObject(getIdGenerator().getCurrentId());
             out.writeObject(new ArrayList(findAll()));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+           load();
     }
 }

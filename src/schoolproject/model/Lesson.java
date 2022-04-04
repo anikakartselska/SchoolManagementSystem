@@ -91,33 +91,5 @@ public class Lesson implements Identifiable<Long, String>, IdentifiableAGR<Long,
         this.subject = subject;
     }
 
-    public static void main(String[] args) {
-        LessonRepository lessonRepository=new LessonRepositoryImpl(new LongIdGenerator());
-        lessonRepository.add(new Lesson());
-        //System.out.println(lessonRepository.findById(1L));
-        GradeRepository gradeRepository=new GradeRepositoryImpl(new LongIdGenerator());
-        StudentRepository studentRepository=new StudentRepositoryImpl(new LongIdGenerator());
-        SubjectRepository subjectRepository=new SubjectRepositoryImpl(new LongIdGenerator());
-        subjectRepository.add(new Subject());
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        studentRepository.add(new Student("Mariya","Petrova","Petrova","mppp@abv.bg","mimi","Mimmmii55$", Gender.FEMALE,"0894673336","rupite", LocalDate.parse("09.08.2009",dtf)));
-        gradeRepository.add(new Grade(LocalDate.now(),subjectRepository.findById(1L),studentRepository.findById(1L),6));
-        gradeRepository.add(new Grade(LocalDate.now(),subjectRepository.findById(1L),studentRepository.findById(1L),5));
-       // gradeRepository.add(new Grade(LocalDate.now(),subjectRepository.findById(1L),studentRepository.findById(1L),6));
 
-        try {
-            subjectRepository.addGrade(subjectRepository.findById(1L), (Grade) gradeRepository.findById(1L));
-            subjectRepository.addGrade(subjectRepository.findById(1L), (Grade) gradeRepository.findById(2L));
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-        System.out.println(subjectRepository.findById(1L));
-        try {
-            System.out.println(studentRepository.changeAverageGrade(studentRepository.findById(1L)));
-            System.out.println(studentRepository.findById(1L).getAverageGrade());
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-    //date, subject, student, value
 }

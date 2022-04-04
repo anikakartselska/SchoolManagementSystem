@@ -1,10 +1,8 @@
 package schoolproject.dao.impl;
-import schoolproject.dao.LongIdGenerator;
-import schoolproject.dao.Repository;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.SubjectRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.impl.helperrepositories.AGFHelperImpl;
-import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.*;
 import schoolproject.model.roles.Teacher;
 

@@ -1,14 +1,12 @@
 package schoolproject.dao.impl.rolesrepoimpl;
 
-import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.rolerepositories.StudentRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.SchoolClass;
-import schoolproject.model.StudentFeedback;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Parent;
 import schoolproject.model.roles.Student;
-import schoolproject.model.roles.User;
 
 import java.util.*;
 

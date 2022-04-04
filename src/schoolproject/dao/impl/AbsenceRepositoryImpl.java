@@ -1,7 +1,7 @@
 package schoolproject.dao.impl;
 
 import schoolproject.dao.AbsenceRepository;
-import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.Absence;
 import schoolproject.model.enums.AbsenceStatus;

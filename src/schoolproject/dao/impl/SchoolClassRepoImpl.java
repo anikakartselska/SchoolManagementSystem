@@ -1,14 +1,11 @@
 package schoolproject.dao.impl;
 
 
-import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.SchoolClassRepo;
 import schoolproject.dao.exceptions.BusyClassException;
 import schoolproject.dao.exceptions.EntityNotFoundException;
-import schoolproject.dao.impl.helperrepositories.AGFHelperImpl;
 import schoolproject.dao.impl.helperrepositories.PersistableRepositoryFileImpl;
-import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
-import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;

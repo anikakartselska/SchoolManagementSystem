@@ -1,11 +1,9 @@
 package schoolproject.dao.impl;
 
-import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.StudentFeedbackTempRepo;
 import schoolproject.dao.exceptions.EntityNotFoundException;
-import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.impl.helperrepositories.PersistableRepositoryFileImpl;
-import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.Subject;
 
 import schoolproject.model.Template;

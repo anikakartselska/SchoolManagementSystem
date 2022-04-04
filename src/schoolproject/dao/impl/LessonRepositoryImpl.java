@@ -1,13 +1,9 @@
 package schoolproject.dao.impl;
 
-import schoolproject.dao.AGRHelper;
 import schoolproject.dao.LessonRepository;
-import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.exceptions.EntityNotFoundException;
-import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.impl.helperrepositories.AGFHelperImpl;
-import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
-import schoolproject.model.Grade;
 import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;

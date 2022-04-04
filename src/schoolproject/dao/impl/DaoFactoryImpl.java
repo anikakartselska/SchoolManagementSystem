@@ -1,6 +1,7 @@
 package schoolproject.dao.impl;
 
 import schoolproject.dao.*;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.impl.rolesrepoimpl.*;
 import schoolproject.dao.rolerepositories.*;
 import schoolproject.model.roles.User;

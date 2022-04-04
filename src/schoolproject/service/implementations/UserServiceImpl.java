@@ -30,10 +30,16 @@ public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, Str
     public V register(V user) {
         try{
             userValidator.validate(user);
+            userRepository.add(user);
+            userRepository.save();
+
         } catch (InvalidEntityDataException e) {
             e.printStackTrace();
         }
-        return userRepository.add(user);
+
+        return user;
+
+
     }
     @Override
     public V logIn(String email, String username, String password) throws InvalidEntityDataException, EntityNotFoundException {
@@ -70,6 +76,7 @@ public class UserServiceImpl<V extends UserIdentifiable & Identifiable<Long, Str
                     " You have entered you old password");
         }
         userRepository.changePassword(user,newPassword);
+        userRepository.save();
         return user;
     }
     @Override

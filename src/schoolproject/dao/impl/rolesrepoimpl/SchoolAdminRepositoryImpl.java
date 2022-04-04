@@ -1,6 +1,6 @@
 package schoolproject.dao.impl.rolesrepoimpl;
 
-import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.impl.helperrepositories.LongIdGenerator;
 import schoolproject.dao.rolerepositories.SchoolAdminRepository;
 import schoolproject.model.roles.SchoolAdmin;
 

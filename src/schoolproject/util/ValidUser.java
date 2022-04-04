@@ -41,7 +41,7 @@ public class ValidUser<V extends UserIdentifiable & Identifiable<Long, String>> 
         Pattern pattern = Pattern.compile("^(.+)@(.+)$");
         Matcher matcher = pattern.matcher(user.getEmail());
 
-        if (!matcher.matches() || (user.getId()==null && userRepository.findByEmail(user.getEmail())!=null)) {
+        if (!matcher.matches() || userRepository.findByEmail(user.getEmail())!=null) {
             throw  new InvalidEntityDataException(user.getClass().getName()+ " email "+ user.getEmail()+
                             " Invalid or already used email.");
         }

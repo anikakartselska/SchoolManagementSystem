@@ -1,4 +1,6 @@
-package schoolproject.dao;
+package schoolproject.dao.impl.helperrepositories;
+
+import schoolproject.dao.IdGenerator;
 
 public class LongIdGenerator implements IdGenerator<Long> {
     private long lastId = 0;
