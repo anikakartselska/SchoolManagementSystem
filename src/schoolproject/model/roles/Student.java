@@ -17,7 +17,6 @@ import java.util.function.Function;
 
 public class Student extends User implements Identifiable<Long,String>,UserIdentifiable{
     private int numberInClass;
-    private HashMap<Long, Parent>parents=new HashMap<>();
     private SchoolClass schoolClass;
     private double averageGrade;
     private HashMap<Long, Subject>subjects=new HashMap<>();
@@ -28,7 +27,6 @@ public class Student extends User implements Identifiable<Long,String>,UserIdent
 
         return new StringJoiner("|", Student.class.getSimpleName() ,"")
                 .add("numberInClass=" + numberInClass)
-                .add("parents=" + parents)
                 .add("schoolClass=" + schoolClass)
                 .add("averageGrade=" + averageGrade)
                 .add("subjects=" + subjects)
@@ -51,7 +49,6 @@ public class Student extends User implements Identifiable<Long,String>,UserIdent
     public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, int numberInClass, HashMap<Long, Parent> parents, SchoolClass schoolClass) {
         super(firstName, secondName, thirdName, email, username, password, gender);
         this.numberInClass = numberInClass;
-        this.parents = parents;
         this.schoolClass = schoolClass;
         this.setRole(Role.STUDENT);
     }
@@ -59,17 +56,8 @@ public class Student extends User implements Identifiable<Long,String>,UserIdent
     public Student(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, int numberInClass, HashMap<Long, Parent> parents, SchoolClass schoolClass) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
         this.numberInClass = numberInClass;
-        this.parents = parents;
         this.schoolClass = schoolClass;
         this.setRole(Role.STUDENT);
-    }
-
-    public HashMap<Long, Parent> getParents() {
-        return parents;
-    }
-
-    public void setParents(HashMap<Long, Parent> parents) {
-        this.parents = parents;
     }
 
 

@@ -4,19 +4,13 @@ import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.impl.DaoFactoryImpl;
 import schoolproject.dao.rolerepositories.*;
-import schoolproject.model.enums.Gender;
 import schoolproject.model.roles.SchoolAdmin;
-import schoolproject.model.roles.Student;
 import schoolproject.model.roles.Teacher;
 import schoolproject.service.SchoolAdminService;
-import schoolproject.service.StudentService;
 import schoolproject.service.TeacherService;
 import schoolproject.service.implementations.SchoolAdminServiceImpl;
-import schoolproject.service.implementations.StudentServiceImpl;
 import schoolproject.service.implementations.TeacherServiceImpl;
-import schoolproject.util.ValidStudent;
 import schoolproject.util.ValidUser;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 

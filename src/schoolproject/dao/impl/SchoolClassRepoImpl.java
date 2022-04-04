@@ -9,6 +9,7 @@ import schoolproject.dao.impl.helperrepositories.PersistableRepositoryFileImpl;
 import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;
+import schoolproject.model.roles.Teacher;
 
 
 import java.util.HashMap;
@@ -20,13 +21,19 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
     }
 
     @Override
+    public SchoolClass changeTeacher(SchoolClass schoolClass, Teacher newTeacher) throws EntityNotFoundException {
+        schoolClass.setMainTeacher(newTeacher);
+        return update(schoolClass);
+    }
+
+    @Override
     public SchoolClass addStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException {
 
         schoolClass.getStudents().put(student.getId(),student);
         return update(schoolClass);
     }
 
-    @Override
+   /* @Override
     public SchoolClass updateStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException {
 
 
@@ -37,7 +44,7 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
         }
 
         return update(schoolClass);
-    }
+    }*/
 
     @Override
     public SchoolClass deleteStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException {
@@ -59,7 +66,7 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
         return update(schoolClass);
     }
 
-    @Override
+    /*@Override
     public SchoolClass updateSubject(SchoolClass schoolClass, Subject subject) throws EntityNotFoundException {
 
 
@@ -71,7 +78,7 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
 
         return update(schoolClass);
     }
-
+     */
     @Override
     public SchoolClass deleteSubject(SchoolClass schoolClass, Subject subject) throws EntityNotFoundException {
 
@@ -84,7 +91,7 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
 
         return update(schoolClass);
     }
-    @Override
+    /*@Override
     public SchoolClass removeSubjectFromWholeProgram(SchoolClass schoolClass, Subject subject) throws EntityNotFoundException {
 
 
@@ -92,8 +99,8 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
                 value.entrySet().removeIf(e -> e.getValue().equals(subject)));
 
         return update(schoolClass);
-    }
-    @Override
+    }*/
+    /*@Override
     public SchoolClass updateSubjectInWholeProgram(SchoolClass schoolClass, Subject subject) throws EntityNotFoundException {
 
         schoolClass.getProgram().forEach((key,value)->
@@ -103,7 +110,7 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
                 }
         );
         return update(schoolClass);
-    }
+    }*/
     @Override
     public SchoolClass addSubjectToProgram(SchoolClass schoolClass, Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException {
 
@@ -122,12 +129,12 @@ public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,Stri
         return update(schoolClass);
     }
 
-    @Override
+    /*@Override
     public SchoolClass updateSubjectFromProgram(SchoolClass schoolClass, Integer day, Integer classNumber, Subject subject) throws  EntityNotFoundException {
 
         if(schoolClass.getProgram().get(day).get(classNumber)==null)
             throw new EntityNotFoundException();
         else schoolClass.getProgram().get(day).put(classNumber,subject);
         return update(schoolClass);
-    }
+    }*/
 }

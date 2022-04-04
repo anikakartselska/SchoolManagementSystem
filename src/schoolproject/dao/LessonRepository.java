@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public interface LessonRepository extends PersistableRepository<Long,String,Lesson>,AGRHelper<Long,String,Lesson>{
     Lesson changeSubject(Lesson lesson, Subject newSubject) throws EntityNotFoundException;
     Lesson changeDate(Lesson lesson,  LocalDate newDate) throws EntityNotFoundException;
-    Lesson changeClass(Lesson lesson, SchoolClass schoolClass) throws EntityNotFoundException;
+
 
 
 }

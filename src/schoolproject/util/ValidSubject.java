@@ -4,12 +4,13 @@ import schoolproject.dao.LessonRepository;
 import schoolproject.dao.SubjectRepository;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.impl.SubjectRepositoryImpl;
+import schoolproject.model.Absence;
 import schoolproject.model.Lesson;
 import schoolproject.model.Subject;
 
 import java.time.LocalDate;
 
-public class ValidSubject {
+public class ValidSubject implements Validation<Subject> {
     private SubjectRepository subjectRepository;
 
     public ValidSubject(SubjectRepository subjectRepository) {

@@ -24,7 +24,6 @@ public class Lesson implements Identifiable<Long, String>, IdentifiableAGR<Long,
     private Long id;
     private Subject subject;
     private LocalDate date;
-    private SchoolClass schoolClass;
     private HashMap<Student,StudentFeedback> feedbacks=new HashMap<>();
 
     public HashMap<Student, StudentFeedback> getFeedbacks() {
@@ -33,15 +32,6 @@ public class Lesson implements Identifiable<Long, String>, IdentifiableAGR<Long,
 
     public void setFeedbacks(HashMap<Student, StudentFeedback> feedbacks) {
         this.feedbacks = feedbacks;
-    }
-
-
-    public SchoolClass getSchoolClass() {
-        return schoolClass;
-    }
-
-    public void setSchoolClass(SchoolClass schoolClass) {
-        this.schoolClass = schoolClass;
     }
 
     @Override
@@ -78,7 +68,6 @@ public class Lesson implements Identifiable<Long, String>, IdentifiableAGR<Long,
                 .add("id=" + id)
                 .add("subject=" + subject)
                 .add("date=" + date)
-                .add("schoolClass=" + schoolClass)
                 .add("feedbacks=" + feedbacks)
                 .toString();
     }

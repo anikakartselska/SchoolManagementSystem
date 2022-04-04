@@ -1,9 +1,10 @@
 package schoolproject.util;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.rolerepositories.UserRepository;
+import schoolproject.model.Absence;
 import schoolproject.model.roles.Student;
 
-public class ValidStudent extends ValidUser<Student>{
+public class ValidStudent extends ValidUser<Student> implements Validation<Student>{
     public ValidStudent(UserRepository<Student> userRepository) {
         super(userRepository);
     }

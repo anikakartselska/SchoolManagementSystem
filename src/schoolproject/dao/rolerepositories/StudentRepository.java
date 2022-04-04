@@ -13,11 +13,8 @@ public interface StudentRepository extends UserRepository<Student> {
     Student changeNumberInClass(Student student,int newNumber) throws EntityNotFoundException;
     Student changeSchoolClass(Student student, SchoolClass schoolClass) throws EntityNotFoundException;
     Student changeAverageGrade(Student student) throws EntityNotFoundException;
-        Student addParent(Student student, Parent parent) throws EntityNotFoundException;
-       Student addSubject(Student student, Subject subject)throws EntityNotFoundException;
-     Student removeParent(Student student, Parent parent) throws EntityNotFoundException;
+    Student addSubject(Student student, Subject subject)throws EntityNotFoundException;
     Student removeSubject(Student student, Subject subject) throws EntityNotFoundException;
-     Student updateParent(Student student,Parent parent) throws EntityNotFoundException;
     Student updateSubject(Student student, Subject subject) throws EntityNotFoundException;
     Collection<Student> findAllSorted(Comparator<Student> comparator);
 

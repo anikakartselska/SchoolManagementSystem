@@ -8,7 +8,7 @@ import schoolproject.model.StudentFeedback;
 
 import java.time.LocalDate;
 
-public class ValidAbsence {
+public class ValidAbsence implements Validation<Absence>{
     private AbsenceRepository absenceRepository;
 
     public ValidAbsence(AbsenceRepository absenceRepository) {

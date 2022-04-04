@@ -39,12 +39,7 @@ public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implement
     }
 
 
-    @Override
-    public Student addParent(Student student, Parent parent) throws EntityNotFoundException {
 
-        student.getParents().put(parent.getId(),parent);
-        return update(student);
-    }
 
     @Override
     public Student addSubject(Student student, Subject subject) throws EntityNotFoundException {
@@ -53,18 +48,6 @@ public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implement
         return update(student);
     }
 
-    @Override
-    public Student removeParent(Student student, Parent parent) throws EntityNotFoundException {
-
-
-        if(student.getParents().get(parent.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getParents().remove(parent.getId());
-        }
-
-        return update(student);
-    }
 
     @Override
     public Student removeSubject(Student student, Subject subject) throws EntityNotFoundException {
@@ -79,18 +62,7 @@ public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implement
         return update(student);
     }
 
-    @Override
-    public Student updateParent(Student student, Parent parent) throws EntityNotFoundException {
 
-
-        if(student.getParents().get(parent.getId())==null)
-            throw new EntityNotFoundException();
-        else {
-            student.getParents().put(parent.getId(),parent);
-        }
-
-        return update(student);
-    }
 
     @Override
     public Student updateSubject(Student student, Subject subject) throws EntityNotFoundException {

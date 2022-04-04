@@ -14,7 +14,7 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class Teacher extends User implements UserIdentifiable {
-    private HashMap<Long, SchoolClass>teachingClasses=new HashMap<>();
+    private HashMap<Long, Subject>teachingSubjects=new HashMap<>();
    private SchoolClass ownClass;
     private final HashMap<Integer,HashMap<Integer,Subject>>program=setProgram(new HashMap<>());
 
@@ -25,7 +25,7 @@ public class Teacher extends User implements UserIdentifiable {
     }
     public String additionalInfo(){
         return new StringJoiner("| ", Teacher.class.getSimpleName(),"")
-                .add("teachingClasses=" + teachingClasses)
+                .add("teachingClasses=" + teachingSubjects)
                 .add("ownClass=" + ownClass)
                 .add("program:\n" + mapToString(program))
                 .toString();
@@ -36,12 +36,13 @@ public class Teacher extends User implements UserIdentifiable {
                 .map(entry -> entry.getKey() + ":" + entry.getValue())
                 .collect(Collectors.joining("\n ", "{", "}"));
     }
-    public HashMap<Long, SchoolClass> getTeachingClasses() {
-        return teachingClasses;
+
+    public HashMap<Long, Subject> getTeachingSubjects() {
+        return teachingSubjects;
     }
 
-    public void setTeachingClasses(HashMap<Long, SchoolClass> teachingClasses) {
-        this.teachingClasses = teachingClasses;
+    public void setTeachingSubjects(HashMap<Long, Subject> teachingSubjects) {
+        this.teachingSubjects = teachingSubjects;
     }
 
     public SchoolClass getOwnClass() {
@@ -71,30 +72,30 @@ public Teacher()
 
 }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, Subject>teachingSubjects, SchoolClass ownClass) {
         super(firstName, secondName, thirdName, email, username, password, gender);
-        this.teachingClasses = teachingClasses;
+        this.teachingSubjects = teachingSubjects;
         this.ownClass = ownClass;
         this.setRole(Role.TEACHER);
 
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, SchoolClass> teachingClasses) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, HashMap<Long, Subject>teachingSubjects) {
         super(firstName, secondName, thirdName, email, username, password, gender);
-        this.teachingClasses = teachingClasses;
+        this.teachingSubjects = teachingSubjects;
         this.setRole(Role.TEACHER);
 
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, HashMap<Long, SchoolClass> teachingClasses) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender, String phoneNumber, String address, LocalDate birthday, HashMap<Long, Subject>teachingSubjects) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
-        this.teachingClasses = teachingClasses;
+        this.teachingSubjects = teachingSubjects;
         this.setRole(Role.TEACHER);
     }
 
-    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, LocalDate birthday, HashMap<Long, SchoolClass> teachingClasses, SchoolClass ownClass) {
+    public Teacher(String firstName, String secondName, String thirdName, String email, String username, String password, Gender gender,  String phoneNumber, String address, LocalDate birthday, HashMap<Long, Subject>teachingSubjects, SchoolClass ownClass) {
         super(firstName, secondName, thirdName, email, username, password, gender, phoneNumber, address, birthday);
-        this.teachingClasses = teachingClasses;
+        this.teachingSubjects = teachingSubjects;
         this.ownClass = ownClass;
         this.setRole(Role.TEACHER);
 

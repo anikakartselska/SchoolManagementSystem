@@ -10,9 +10,9 @@ import schoolproject.model.roles.Teacher;
 
 public interface TeacherRepository extends UserRepository<Teacher> {
     Teacher changeOwnClass(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException;
-    Teacher addTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException;
-    Teacher removeTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException;
-    Teacher updateTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException;
+    Teacher addTeachingSubject(Teacher teacher, Subject subject) throws EntityNotFoundException;
+    Teacher removeTeachingSubject(Teacher teacher, Subject subject) throws EntityNotFoundException;
+    Teacher updateTeachingSubject(Teacher teacher, Subject subject) throws EntityNotFoundException;
     Teacher addSubjectToProgram(Teacher teacher, Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException;
     Teacher removeSubjectFromProgram(Teacher teacher,  Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException;
     Teacher updateSubjectFromProgram(Teacher teacher,  Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException;

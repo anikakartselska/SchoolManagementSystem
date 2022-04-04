@@ -4,6 +4,7 @@ import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.dao.rolerepositories.UserRepository;
+import schoolproject.model.Absence;
 import schoolproject.model.roles.User;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ValidUser<V extends UserIdentifiable & Identifiable<Long, String>> {
+public class ValidUser<V extends UserIdentifiable & Identifiable<Long, String>> implements Validation<V>{
     private UserRepository<V> userRepository;
 
     public ValidUser(UserRepository<V> userRepository) {

@@ -3,12 +3,13 @@ package schoolproject.util;
 import schoolproject.dao.AbsenceRepository;
 import schoolproject.dao.RemarkRepository;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
+import schoolproject.model.Absence;
 import schoolproject.model.Remark;
 import schoolproject.model.StudentFeedback;
 
 import java.time.LocalDate;
 
-public class ValidRemark {
+public class ValidRemark implements Validation<Remark> {
     private RemarkRepository remarkRepository;
 
     public ValidRemark(RemarkRepository remarkRepository) {

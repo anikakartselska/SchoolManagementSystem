@@ -32,11 +32,6 @@ public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> impl
         return update(lesson);
     }
 
-    @Override
-    public Lesson changeClass(Lesson lesson, SchoolClass newSchoolClass) throws EntityNotFoundException {
-        lesson.setSchoolClass(newSchoolClass);
-        return update(lesson);
-    }
 
 
 

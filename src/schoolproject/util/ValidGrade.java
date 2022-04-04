@@ -3,12 +3,13 @@ package schoolproject.util;
 import schoolproject.dao.GradeRepository;
 import schoolproject.dao.exceptions.InvalidEntityDataException;
 import schoolproject.dao.impl.GradeRepositoryImpl;
+import schoolproject.model.Absence;
 import schoolproject.model.Grade;
 import schoolproject.model.StudentFeedback;
 
 import java.time.LocalDate;
 
-public class ValidGrade {
+public class ValidGrade implements Validation<Grade>{
     private GradeRepository gradeRepository;
 
     public ValidGrade(GradeRepository gradeRepository) {

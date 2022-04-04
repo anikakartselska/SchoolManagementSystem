@@ -25,37 +25,34 @@ public class TeacherRepositoryImpl extends UserRepositoryImpl<Teacher> implement
     }
 
     @Override
-    public Teacher addTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException {
-
-        teacher.getTeachingClasses().put(schoolClass.getId(),schoolClass);
+    public Teacher addTeachingSubject(Teacher teacher, Subject subject) throws EntityNotFoundException {
+        teacher.getTeachingSubjects().put(subject.getId(),subject);
         return update(teacher);
     }
 
     @Override
-    public Teacher removeTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException {
-
-
-        if(teacher.getTeachingClasses().get(schoolClass.getId())==null)
+    public Teacher removeTeachingSubject(Teacher teacher, Subject subject) throws EntityNotFoundException {
+        if(teacher.getTeachingSubjects().get(subject.getId())==null)
             throw new EntityNotFoundException();
         else {
-            teacher.getTeachingClasses().remove(schoolClass.getId());
+            teacher.getTeachingSubjects().remove(subject.getId());
         }
 
         return update(teacher);
     }
 
     @Override
-    public Teacher updateTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException {
-
-
-        if(teacher.getTeachingClasses().get(schoolClass.getId())==null)
+    public Teacher updateTeachingSubject(Teacher teacher, Subject subject) throws EntityNotFoundException {
+        if(teacher.getTeachingSubjects().get(subject.getId())==null)
             throw new EntityNotFoundException();
         else {
-            teacher.getTeachingClasses().put(schoolClass.getId(),schoolClass);
+            teacher.getTeachingSubjects().put(subject.getId(),subject);
         }
 
         return update(teacher);
     }
+
+
 
     @Override
     public Teacher addSubjectToProgram(Teacher teacher, Integer day, Integer classNumber, Subject subject) throws BusyClassException, EntityNotFoundException {
