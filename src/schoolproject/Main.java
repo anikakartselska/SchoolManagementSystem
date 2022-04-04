@@ -2,10 +2,7 @@ package schoolproject;
 import schoolproject.dao.DaoFactory;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.impl.DaoFactoryImpl;
-import schoolproject.dao.rolerepositories.ParentRepository;
-import schoolproject.dao.rolerepositories.StudentRepository;
-import schoolproject.dao.rolerepositories.TeacherRepository;
-import schoolproject.dao.rolerepositories.UserRepository;
+import schoolproject.dao.rolerepositories.*;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.roles.Student;
 import schoolproject.model.roles.Teacher;
@@ -34,6 +31,7 @@ public class Main {
         TeacherRepository teacherRepository=daoFactory.createTeacherRepository();
         ParentRepository parentRepository=daoFactory.createParentRepository();
         StudentRepository studentRepository= daoFactory.createStudentRepository();
+        SchoolAdminRepository schoolAdminRepository=daoFactory.createSchoolAdminRepository();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         TeacherService teacherService=new TeacherServiceImpl(teacherRepository,new ValidUser<>(teacherRepository));
         StudentService studentService=new StudentServiceImpl(studentRepository,new ValidStudent(studentRepository));
@@ -41,20 +39,7 @@ public class Main {
         teacherService.register(new Teacher("Anika","Petrova","Kartselska","axa@abv.bg","janika","Anikaaa444$", Gender.FEMALE,"0894663436","rupite", LocalDate.parse("09.12.2001",dtf)));
 
 
-        SchoolAdminService<Student> schoolAdminService=new SchoolAdminServiceImpl<>(studentRepository,new ValidStudent(studentRepository));
 
-        studentService.register(new Student("Mariya","Petrova","Petrova","mppp@abv.bg","mimi","Mimmmii55$", Gender.FEMALE,"0894673336","rupite", LocalDate.parse("09.08.2009",dtf)));
-                studentService.register(new Student("Gergana","Dimitrova","Dimitrova","gerryy@abv.bg","gery","Geri444$", Gender.FEMALE,"0894673999","rupite", LocalDate.parse("10.07.2010",dtf)));
-        try {
-            schoolAdminService.approveRegisterRequest(studentService.getUserById(1L));
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            System.out.println(studentService.getUserById(1L));
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
 
     }
 }

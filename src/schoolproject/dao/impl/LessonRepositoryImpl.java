@@ -2,6 +2,7 @@ package schoolproject.dao.impl;
 
 import schoolproject.dao.AGRHelper;
 import schoolproject.dao.LessonRepository;
+import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.impl.helperrepositories.AGFHelperImpl;
@@ -15,6 +16,10 @@ import java.time.LocalDate;
 
 
 public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> implements LessonRepository{
+    public LessonRepositoryImpl(LongIdGenerator idGenerator) {
+        super(idGenerator);
+    }
+
     @Override
     public Lesson changeSubject(Lesson lesson, Subject newSubject) throws EntityNotFoundException {
         lesson.setSubject(newSubject);

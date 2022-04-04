@@ -1,9 +1,6 @@
 package schoolproject.model;
 
-import schoolproject.dao.AbsenceRepository;
-import schoolproject.dao.GradeRepository;
-import schoolproject.dao.LessonRepository;
-import schoolproject.dao.SubjectRepository;
+import schoolproject.dao.*;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.IdentifiableAGR;
@@ -16,13 +13,14 @@ import schoolproject.dao.rolerepositories.StudentRepository;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.roles.Student;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.StringJoiner;
 
-public class Lesson implements Identifiable<Long, String>, IdentifiableAGR<Long, String> {
+public class Lesson implements Identifiable<Long, String>, IdentifiableAGR<Long, String>, Serializable {
     private Long id;
     private Subject subject;
     private LocalDate date;
@@ -94,12 +92,12 @@ public class Lesson implements Identifiable<Long, String>, IdentifiableAGR<Long,
     }
 
     public static void main(String[] args) {
-        LessonRepository lessonRepository=new LessonRepositoryImpl();
+        LessonRepository lessonRepository=new LessonRepositoryImpl(new LongIdGenerator());
         lessonRepository.add(new Lesson());
         //System.out.println(lessonRepository.findById(1L));
-        GradeRepository gradeRepository=new GradeRepositoryImpl();
-        StudentRepository studentRepository=new StudentRepositoryImpl();
-        SubjectRepository subjectRepository=new SubjectRepositoryImpl();
+        GradeRepository gradeRepository=new GradeRepositoryImpl(new LongIdGenerator());
+        StudentRepository studentRepository=new StudentRepositoryImpl(new LongIdGenerator());
+        SubjectRepository subjectRepository=new SubjectRepositoryImpl(new LongIdGenerator());
         subjectRepository.add(new Subject());
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         studentRepository.add(new Student("Mariya","Petrova","Petrova","mppp@abv.bg","mimi","Mimmmii55$", Gender.FEMALE,"0894673336","rupite", LocalDate.parse("09.08.2009",dtf)));

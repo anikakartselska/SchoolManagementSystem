@@ -1,11 +1,16 @@
 package schoolproject.dao.impl.rolesrepoimpl;
 
+import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.rolerepositories.ParentRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.roles.Parent;
 import schoolproject.model.roles.Student;
 
 public class ParentRepositoryImpl extends UserRepositoryImpl<Parent> implements ParentRepository {
+    public ParentRepositoryImpl(LongIdGenerator idGenerator) {
+        super(idGenerator);
+    }
+
     @Override
     public Parent changeMonthIncome(Parent parent, Double income) throws EntityNotFoundException {
 

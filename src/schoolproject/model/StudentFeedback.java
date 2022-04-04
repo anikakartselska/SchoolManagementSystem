@@ -2,11 +2,12 @@ package schoolproject.model;
 
 import schoolproject.model.roles.Student;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.StringJoiner;
 
-public class StudentFeedback {
+public class StudentFeedback implements Serializable {
     private double averageGrade=0;
     private HashMap<Long,Absence>absences=new HashMap<>();
     private HashMap<Long,Remark>remarks=new HashMap<>();

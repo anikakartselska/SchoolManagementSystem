@@ -9,21 +9,13 @@ import java.util.Collection;
 
 public interface Repository<K,S,V extends Identifiable<K,S>> {
 
-    interface IdGenerator<K>{
-        K getNextId();
-    }
 
-     class LongIdGenerator implements IdGenerator<Long>
-    { private long lastId=0;
-        @Override
-        public Long getNextId() {
-            return ++lastId;
-        }
-    }
     Collection<V> findAll();
     V findById(K id);
     V add(V entity);
     V update(V entity) throws EntityNotFoundException;
     V delete(V entity) throws EntityNotFoundException;
+    void addAll(Collection<V> entities);
+    void clear();
 
 }

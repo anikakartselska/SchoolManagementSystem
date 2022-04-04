@@ -5,10 +5,11 @@ import schoolproject.dao.identifiiables.IdentifiableAGR;
 import schoolproject.model.roles.Student;
 import schoolproject.model.roles.Teacher;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.StringJoiner;
 
-public class Subject implements Identifiable<Long, String>, IdentifiableAGR<Long, String> {
+public class Subject implements Identifiable<Long, String>, IdentifiableAGR<Long, String>, Serializable {
     private Long id;
     private String subName;
     private Teacher teacher;

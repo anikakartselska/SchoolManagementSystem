@@ -1,5 +1,6 @@
 package schoolproject.dao.impl;
 
+import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.StudentFeedbackTempRepo;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.identifiiables.Identifiable;
@@ -12,6 +13,10 @@ import java.time.LocalDate;
 
 
 public class StudentFeedbackTempRepoImpl<T> extends RepositoryImpl<Long,String,Template<T>> implements StudentFeedbackTempRepo<T> {
+
+    public StudentFeedbackTempRepoImpl(LongIdGenerator idGenerator) {
+        super(idGenerator);
+    }
 
     @Override
     public Template<T> changeDate(Template<T> temp, LocalDate newDate) throws EntityNotFoundException {

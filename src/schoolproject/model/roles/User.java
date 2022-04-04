@@ -6,12 +6,13 @@ import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Role;
 import schoolproject.model.enums.Status;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.StringJoiner;
 
-public class User implements Identifiable<Long, String>, UserIdentifiable {
+public class User implements Identifiable<Long, String>, UserIdentifiable, Serializable {
     private long id;
     private String firstName;
     private String secondName;
@@ -24,6 +25,7 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
     private String address;
     private LocalDate birthday;
     private Status status=Status.PENDING;
+    private Role role=Role.USER;
     public Role getRole() {
         return role;
     }
@@ -34,7 +36,7 @@ public class User implements Identifiable<Long, String>, UserIdentifiable {
         this.role = role;
     }
 
-    private Role role=Role.USER;
+
 
     public Status getStatus() {
         return status;

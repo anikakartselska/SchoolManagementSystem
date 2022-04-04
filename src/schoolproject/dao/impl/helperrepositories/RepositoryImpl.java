@@ -2,6 +2,8 @@ package schoolproject.dao.impl.helperrepositories;
 
 
 
+import schoolproject.dao.IdGenerator;
+import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.Repository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
@@ -13,7 +15,23 @@ import java.util.Map;
 public class RepositoryImpl<K,S,V extends Identifiable<K,S>> implements Repository<K,S,V> {
 
     private final Map<K, V> entities = new HashMap<>();
-    private final IdGenerator<Long> idGenerator= new LongIdGenerator();
+    private LongIdGenerator idGenerator;
+    public RepositoryImpl(LongIdGenerator idGenerator) {
+        this.idGenerator = idGenerator;
+    }
+
+
+    @Override
+    public void addAll(Collection<V> entitiess) {
+        for(var entity: entitiess) {
+            entities.put(entity.getId(),entity);
+        }
+    }
+
+    @Override
+    public void clear() {
+        entities.clear();
+    }
 
 
     @Override
@@ -50,5 +68,13 @@ public class RepositoryImpl<K,S,V extends Identifiable<K,S>> implements Reposito
         entity.setId(idGenerator.getNextId());
         entities.put(entity.getId(), entity);
         return entity;
+    }
+
+    public LongIdGenerator getIdGenerator() {
+        return idGenerator;
+    }
+
+    public void setIdGenerator(LongIdGenerator idGenerator) {
+        this.idGenerator = idGenerator;
     }
 }

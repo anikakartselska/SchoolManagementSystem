@@ -8,61 +8,62 @@ import schoolproject.model.roles.User;
 public class DaoFactoryImpl implements DaoFactory {
     @Override
     public HeadTeacherRepository createHeadTeacherRepository() {
-       return new HeadTeacherRepositoryImpl();
+       return new HeadTeacherRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public ParentRepository createParentRepository() {
-        return new ParentRepositoryImpl();
+        return new ParentRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public SchoolAdminRepository createSchoolAdminRepository() {
-        return new SchoolAdminRepositoryImpl();
+        return new SchoolAdminRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public StudentRepository createStudentRepository() {
-        return new StudentRepositoryImpl();
+        return new StudentRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public TeacherRepository createTeacherRepository() {
-        return new TeacherRepositoryImpl();
+        return new TeacherRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public UserRepository<User> createUserRepository() {
-        return new UserRepositoryImpl<>();
+        return new UserRepositoryImpl<>(new LongIdGenerator());
     }
 
     @Override
     public AbsenceRepository createAbsenceRepository() {
-        return new AbsenceRepositoryImpl();
+        return new AbsenceRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public GradeRepository createGradeRepository() {
-        return new GradeRepositoryImpl();
+        return new GradeRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public RemarkRepository createRemarkRepository() {
-        return new RemarkRepositoryImpl();
+        return new RemarkRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public SchoolClassRepo createSchoolClassRepository() {
-        return new SchoolClassRepoImpl();
+       return new SchoolClassRepoImpl(new LongIdGenerator());
     }
 
     @Override
     public SubjectRepository createSubjectRepository() {
-        return new SubjectRepositoryImpl();
+
+        return new SubjectRepositoryImpl(new LongIdGenerator());
     }
 
     @Override
     public LessonRepository createLessonRepository() {
-        return new LessonRepositoryImpl();
+        return new LessonRepositoryImpl(new LongIdGenerator());
     }
 }

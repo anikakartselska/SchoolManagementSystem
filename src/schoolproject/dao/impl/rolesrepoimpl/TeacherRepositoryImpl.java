@@ -1,5 +1,6 @@
 package schoolproject.dao.impl.rolesrepoimpl;
 
+import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.rolerepositories.TeacherRepository;
 import schoolproject.dao.exceptions.BusyClassException;
 import schoolproject.dao.exceptions.EntityNotFoundException;
@@ -10,6 +11,10 @@ import schoolproject.model.roles.Teacher;
 import java.util.HashMap;
 
 public class TeacherRepositoryImpl extends UserRepositoryImpl<Teacher> implements TeacherRepository  {
+    public TeacherRepositoryImpl(LongIdGenerator idGenerator) {
+        super(idGenerator);
+    }
+
     @Override
     public Teacher changeOwnClass(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException {
 

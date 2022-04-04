@@ -1,5 +1,6 @@
 package schoolproject.dao.impl.rolesrepoimpl;
 
+import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.UserIdentifiable;
 import schoolproject.dao.rolerepositories.UserRepository;
@@ -9,6 +10,10 @@ import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Status;
 
 public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, String>> extends RepositoryImpl<Long,String, V> implements UserRepository<V> {
+
+    public UserRepositoryImpl(LongIdGenerator idGenerator) {
+        super(idGenerator);
+    }
 
     @Override
     public V changeFirstName(V user, String newFirstName) throws EntityNotFoundException {

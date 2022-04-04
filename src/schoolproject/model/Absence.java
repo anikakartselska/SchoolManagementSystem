@@ -3,6 +3,7 @@ package schoolproject.model;
 import schoolproject.model.enums.AbsenceStatus;
 import schoolproject.model.roles.Student;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.StringJoiner;
 

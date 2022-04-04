@@ -10,7 +10,7 @@ import schoolproject.model.Subject;
 import java.time.LocalDate;
 
 public class ValidSubject {
-    private SubjectRepository subjectRepository=new SubjectRepositoryImpl();
+    private SubjectRepository subjectRepository;
 
     public ValidSubject(SubjectRepository subjectRepository) {
         this.subjectRepository = subjectRepository;

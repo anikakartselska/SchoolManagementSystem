@@ -1,4 +1,5 @@
 package schoolproject.dao.impl;
+import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.Repository;
 import schoolproject.dao.SubjectRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
@@ -8,6 +9,10 @@ import schoolproject.model.*;
 import schoolproject.model.roles.Teacher;
 
 public class SubjectRepositoryImpl extends AGFHelperImpl<Long,String,Subject> implements SubjectRepository {
+    public SubjectRepositoryImpl(LongIdGenerator idGenerator) {
+        super(idGenerator);
+    }
+
     @Override
     public Subject changeName(Subject subject, String newName) throws EntityNotFoundException {
 
