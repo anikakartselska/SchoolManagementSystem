@@ -8,7 +8,7 @@ import schoolproject.model.SchoolClass;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Teacher;
 
-public interface TeacherRepository extends UserRepository<Teacher>, Repository<Long,String,Teacher> {
+public interface TeacherRepository extends UserRepository<Teacher> {
     Teacher changeOwnClass(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException;
     Teacher addTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException;
     Teacher removeTeachingClasses(Teacher teacher, SchoolClass schoolClass) throws EntityNotFoundException;

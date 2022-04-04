@@ -5,7 +5,8 @@ import schoolproject.dao.rolerepositories.SchoolAdminRepository;
 import schoolproject.model.roles.SchoolAdmin;
 
 public class SchoolAdminRepositoryImpl extends UserRepositoryImpl<SchoolAdmin> implements SchoolAdminRepository {
-    public SchoolAdminRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+    public SchoolAdminRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 }

@@ -7,8 +7,10 @@ import schoolproject.model.roles.Parent;
 import schoolproject.model.roles.Student;
 
 public class ParentRepositoryImpl extends UserRepositoryImpl<Parent> implements ParentRepository {
-    public ParentRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+
+    public ParentRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

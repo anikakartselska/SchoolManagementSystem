@@ -9,8 +9,10 @@ import schoolproject.model.*;
 import schoolproject.model.roles.Teacher;
 
 public class SubjectRepositoryImpl extends AGFHelperImpl<Long,String,Subject> implements SubjectRepository {
-    public SubjectRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+
+    public SubjectRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

@@ -4,6 +4,7 @@ import schoolproject.dao.LongIdGenerator;
 import schoolproject.dao.StudentFeedbackTempRepo;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.identifiiables.Identifiable;
+import schoolproject.dao.impl.helperrepositories.PersistableRepositoryFileImpl;
 import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.Subject;
 
@@ -12,10 +13,11 @@ import schoolproject.model.roles.Student;
 import java.time.LocalDate;
 
 
-public class StudentFeedbackTempRepoImpl<T> extends RepositoryImpl<Long,String,Template<T>> implements StudentFeedbackTempRepo<T> {
+public class StudentFeedbackTempRepoImpl<T> extends PersistableRepositoryFileImpl<Long,String,Template<T>> implements StudentFeedbackTempRepo<T> {
 
-    public StudentFeedbackTempRepoImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+    public StudentFeedbackTempRepoImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

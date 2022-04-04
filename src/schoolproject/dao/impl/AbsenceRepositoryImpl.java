@@ -7,8 +7,10 @@ import schoolproject.model.Absence;
 import schoolproject.model.enums.AbsenceStatus;
 
 public class AbsenceRepositoryImpl  extends StudentFeedbackTempRepoImpl<Double> implements AbsenceRepository{
-    public AbsenceRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+
+    public AbsenceRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

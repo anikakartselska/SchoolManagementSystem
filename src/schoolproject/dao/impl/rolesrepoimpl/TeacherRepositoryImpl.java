@@ -11,8 +11,10 @@ import schoolproject.model.roles.Teacher;
 import java.util.HashMap;
 
 public class TeacherRepositoryImpl extends UserRepositoryImpl<Teacher> implements TeacherRepository  {
-    public TeacherRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+
+    public TeacherRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

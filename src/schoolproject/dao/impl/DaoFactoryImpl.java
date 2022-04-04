@@ -7,63 +7,63 @@ import schoolproject.model.roles.User;
 
 public class DaoFactoryImpl implements DaoFactory {
     @Override
-    public HeadTeacherRepository createHeadTeacherRepository() {
-       return new HeadTeacherRepositoryImpl(new LongIdGenerator());
+    public HeadTeacherRepository createHeadTeacherRepository(String fileName) {
+       return new HeadTeacherRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public ParentRepository createParentRepository() {
-        return new ParentRepositoryImpl(new LongIdGenerator());
+    public ParentRepository createParentRepository(String fileName) {
+        return new ParentRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public SchoolAdminRepository createSchoolAdminRepository() {
-        return new SchoolAdminRepositoryImpl(new LongIdGenerator());
+    public SchoolAdminRepository createSchoolAdminRepository(String fileName) {
+        return new SchoolAdminRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public StudentRepository createStudentRepository() {
-        return new StudentRepositoryImpl(new LongIdGenerator());
+    public StudentRepository createStudentRepository(String fileName) {
+        return new StudentRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public TeacherRepository createTeacherRepository() {
-        return new TeacherRepositoryImpl(new LongIdGenerator());
+    public TeacherRepository createTeacherRepository(String fileName) {
+        return new TeacherRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public UserRepository<User> createUserRepository() {
-        return new UserRepositoryImpl<>(new LongIdGenerator());
+    public UserRepository<User> createUserRepository(String fileName) {
+        return new UserRepositoryImpl<>(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public AbsenceRepository createAbsenceRepository() {
-        return new AbsenceRepositoryImpl(new LongIdGenerator());
+    public AbsenceRepository createAbsenceRepository(String fileName) {
+        return new AbsenceRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public GradeRepository createGradeRepository() {
-        return new GradeRepositoryImpl(new LongIdGenerator());
+    public GradeRepository createGradeRepository(String fileName) {
+        return new GradeRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public RemarkRepository createRemarkRepository() {
-        return new RemarkRepositoryImpl(new LongIdGenerator());
+    public RemarkRepository createRemarkRepository(String fileName) {
+        return new RemarkRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public SchoolClassRepo createSchoolClassRepository() {
-       return new SchoolClassRepoImpl(new LongIdGenerator());
+    public SchoolClassRepo createSchoolClassRepository(String fileName) {
+       return new SchoolClassRepoImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public SubjectRepository createSubjectRepository() {
+    public SubjectRepository createSubjectRepository(String fileName) {
 
-        return new SubjectRepositoryImpl(new LongIdGenerator());
+        return new SubjectRepositoryImpl(new LongIdGenerator(),fileName);
     }
 
     @Override
-    public LessonRepository createLessonRepository() {
-        return new LessonRepositoryImpl(new LongIdGenerator());
+    public LessonRepository createLessonRepository(String fileName) {
+        return new LessonRepositoryImpl(new LongIdGenerator(),fileName);
     }
 }

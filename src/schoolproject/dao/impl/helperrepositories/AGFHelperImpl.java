@@ -2,6 +2,7 @@ package schoolproject.dao.impl.helperrepositories;
 
 import schoolproject.dao.AGRHelper;
 import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.PersistableRepository;
 import schoolproject.dao.identifiiables.IdentifiableAGR;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.model.*;
@@ -9,9 +10,9 @@ import schoolproject.model.roles.Student;
 
 import java.util.stream.Collectors;
 
-public class AGFHelperImpl<K,S,V extends IdentifiableAGR<K,S>> extends RepositoryImpl<K,S,V> implements AGRHelper<K,S,V> {
-    public AGFHelperImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+public class AGFHelperImpl<K,S,V extends IdentifiableAGR<K,S>> extends PersistableRepositoryFileImpl<K,S,V> implements AGRHelper<K,S,V> {
+    public AGFHelperImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

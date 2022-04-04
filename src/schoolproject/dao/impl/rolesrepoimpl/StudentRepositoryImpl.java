@@ -15,8 +15,8 @@ import java.util.*;
 public class StudentRepositoryImpl extends UserRepositoryImpl<Student> implements StudentRepository {
 
 
-    public StudentRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+    public StudentRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

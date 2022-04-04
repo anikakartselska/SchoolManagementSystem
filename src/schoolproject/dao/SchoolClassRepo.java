@@ -8,7 +8,7 @@ import schoolproject.model.StudentFeedback;
 import schoolproject.model.Subject;
 import schoolproject.model.roles.Student;
 
-public interface SchoolClassRepo extends Repository <Long,String, SchoolClass>{
+public interface SchoolClassRepo extends PersistableRepository <Long,String, SchoolClass>{
 
     SchoolClass addStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException;
     SchoolClass updateStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException;

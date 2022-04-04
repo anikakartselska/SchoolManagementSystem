@@ -6,6 +6,7 @@ import schoolproject.dao.SchoolClassRepo;
 import schoolproject.dao.exceptions.BusyClassException;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.impl.helperrepositories.AGFHelperImpl;
+import schoolproject.dao.impl.helperrepositories.PersistableRepositoryFileImpl;
 import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.Lesson;
 import schoolproject.model.SchoolClass;
@@ -15,10 +16,12 @@ import schoolproject.model.roles.Student;
 
 import java.util.HashMap;
 
-public class SchoolClassRepoImpl extends RepositoryImpl<Long,String,SchoolClass> implements SchoolClassRepo {
-    public SchoolClassRepoImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+public class SchoolClassRepoImpl extends PersistableRepositoryFileImpl<Long,String,SchoolClass> implements SchoolClassRepo {
+
+    public SchoolClassRepoImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
+
     @Override
     public SchoolClass addStudent(SchoolClass schoolClass, Student student) throws EntityNotFoundException {
 

@@ -16,8 +16,10 @@ import java.time.LocalDate;
 
 
 public class LessonRepositoryImpl extends AGFHelperImpl<Long,String,Lesson> implements LessonRepository{
-    public LessonRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+
+    public LessonRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

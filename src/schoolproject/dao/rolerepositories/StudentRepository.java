@@ -9,7 +9,7 @@ import schoolproject.model.roles.Student;
 import java.util.Collection;
 import java.util.Comparator;
 
-public interface StudentRepository extends UserRepository<Student>, Repository<Long,String,Student> {
+public interface StudentRepository extends UserRepository<Student> {
     Student changeNumberInClass(Student student,int newNumber) throws EntityNotFoundException;
     Student changeSchoolClass(Student student, SchoolClass schoolClass) throws EntityNotFoundException;
     Student changeAverageGrade(Student student) throws EntityNotFoundException;

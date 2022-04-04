@@ -8,7 +8,7 @@ import schoolproject.model.roles.Student;
 
 import java.time.LocalDate;
 
-public interface StudentFeedbackTempRepo<T> extends Repository <Long,String, Template<T>> {
+public interface StudentFeedbackTempRepo<T> extends PersistableRepository <Long,String, Template<T>> {
     Template<T> changeDate (Template<T> temp, LocalDate newDate) throws EntityNotFoundException;
 
     Template<T> changeSubject (Template<T> temp, Subject newSubject) throws EntityNotFoundException;

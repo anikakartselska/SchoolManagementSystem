@@ -26,7 +26,7 @@ public class Main {
 
 
 
-      DaoFactory daoFactory=new DaoFactoryImpl();
+    /*  DaoFactory daoFactory=new DaoFactoryImpl();
         UserRepository<Teacher> userRepository=daoFactory.createTeacherRepository();
         TeacherRepository teacherRepository=daoFactory.createTeacherRepository();
         ParentRepository parentRepository=daoFactory.createParentRepository();
@@ -38,7 +38,7 @@ public class Main {
         teacherService.register(new Teacher("Anika","Petrova","Kartselska","aa@abv.bg","anika","Anikaaa444$", Gender.FEMALE,"0894673436","rupite", LocalDate.parse("09.12.2001",dtf)));
         teacherService.register(new Teacher("Anika","Petrova","Kartselska","axa@abv.bg","janika","Anikaaa444$", Gender.FEMALE,"0894663436","rupite", LocalDate.parse("09.12.2001",dtf)));
 
-
+ */
 
 
     }

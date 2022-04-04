@@ -1,18 +1,21 @@
 package schoolproject.dao.impl.rolesrepoimpl;
 
 import schoolproject.dao.LongIdGenerator;
+import schoolproject.dao.PersistableRepository;
 import schoolproject.dao.identifiiables.Identifiable;
 import schoolproject.dao.identifiiables.UserIdentifiable;
+import schoolproject.dao.impl.helperrepositories.PersistableRepositoryFileImpl;
 import schoolproject.dao.rolerepositories.UserRepository;
 import schoolproject.dao.exceptions.EntityNotFoundException;
 import schoolproject.dao.impl.helperrepositories.RepositoryImpl;
 import schoolproject.model.enums.Gender;
 import schoolproject.model.enums.Status;
 
-public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, String>> extends RepositoryImpl<Long,String, V> implements UserRepository<V> {
+public class UserRepositoryImpl<V extends UserIdentifiable & Identifiable<Long, String>> extends PersistableRepositoryFileImpl<Long,String, V> implements UserRepository<V> {
 
-    public UserRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+
+    public UserRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 
     @Override

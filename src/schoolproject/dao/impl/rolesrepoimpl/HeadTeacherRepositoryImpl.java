@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class HeadTeacherRepositoryImpl extends UserRepositoryImpl<HeadTeacher> implements HeadTeacherRepository {
 
 
-    public HeadTeacherRepositoryImpl(LongIdGenerator idGenerator) {
-        super(idGenerator);
+    public HeadTeacherRepositoryImpl(LongIdGenerator idGenerator, String dbFileName) {
+        super(idGenerator, dbFileName);
     }
 }
